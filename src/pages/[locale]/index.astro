@@ -15,4 +15,7 @@ const { locale } = Astro.params;
   <a href={getRelativeLocaleUrl(locale, "about")}>
     {t(locale, "about.title")}
   </a>
+  <p class="text-red-500 bg-red-200 w-[250px] p-3 rounded-full">
+    Das sollte nur auf Stage stehen
+  </p>
 </Layout>

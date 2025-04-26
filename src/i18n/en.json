@@ -1,0 +1,13 @@
+{
+  "index": {
+    "title": "Welcome!"
+  },
+  "about": {
+    "title": "About Us",
+    "text": "This is the English about page."
+  },
+  "guestbook": {
+    "title": "Guestbook",
+    "text": "Hi I'm a book for guests"
+  }
+}

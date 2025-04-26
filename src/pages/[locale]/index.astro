@@ -1,0 +1,18 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { t } from "../../i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+export async function getStaticPaths() {
+  return [{ params: { locale: "en" } }, { params: { locale: "de" } }];
+}
+
+const { locale } = Astro.params;
+---
+
+<Layout>
+  <h1>{t(locale, "index.title")}</h1>
+  <a href={getRelativeLocaleUrl(locale, "about")}>
+    {t(locale, "about.title")}
+  </a>
+</Layout>

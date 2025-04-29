@@ -14,7 +14,7 @@ A website project built with [Astro](https://astro.build/), featuring:
 ```text
 /
 ├── public/
-│   └── _redirects        (Redirect rules)
+│   └── fonts/            (Custom fonts)
 ├── src/
 │   ├── layouts/          (Page layouts)
 │   ├── pages/            (Localized pages, e.g., [locale]/test.astro)

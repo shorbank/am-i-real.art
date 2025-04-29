@@ -13,9 +13,10 @@ export const onRequest = defineMiddleware(async ({ url, preferredLocale, redirec
   }
 
   const hasLocalePrefix = pathname.startsWith('/de/') || pathname.startsWith('/en/');
+  const locale = preferredLocale || 'en';
 
-  if (!hasLocalePrefix && preferredLocale) {
-    return redirect(`/${preferredLocale}${pathname}`, 302);
+  if (!hasLocalePrefix) {
+    return redirect(`/${locale}${pathname}`, 302);
   }
 
   return await next();

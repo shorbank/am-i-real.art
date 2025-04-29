@@ -7,11 +7,12 @@ const qrRedirects: Record<string, string> = {
 
 export const onRequest = defineMiddleware(async ({ url, preferredLocale, redirect }, next) => {
   const pathname = url.pathname;
-  const hasLocalePrefix = pathname.startsWith('/de/') || pathname.startsWith('/en/');
 
-  if (qrRedirects[pathname] && preferredLocale) {
-    return redirect(`/${preferredLocale}${qrRedirects[pathname]}`, 302);
+  if (qrRedirects[pathname]) {
+    return redirect(qrRedirects[pathname], 302);
   }
+
+  const hasLocalePrefix = pathname.startsWith('/de/') || pathname.startsWith('/en/');
 
   if (!hasLocalePrefix && preferredLocale) {
     return redirect(`/${preferredLocale}${pathname}`, 302);

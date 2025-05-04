@@ -15,4 +15,7 @@ const { locale } = Astro.params;
   <a href={getRelativeLocaleUrl(locale, "about")}>
     {t(locale, "about.title")}
   </a>
+  <a class="text-red-500" href={getRelativeLocaleUrl(locale, "guestbook")}>
+    {t(locale, "about.title")}
+  </a>
 </Layout>

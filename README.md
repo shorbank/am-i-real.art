@@ -74,4 +74,6 @@ The build script uses `astro build --remote` to connect to the remote database d
 | `npm run build`       | Build for production             |
 | `npm run preview`     | Preview the production build     |
 
+**Note:** Please use http://localhost:3005/en/ to access the local dev environment. 
+
 ---

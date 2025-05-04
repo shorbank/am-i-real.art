@@ -14,7 +14,7 @@ A website project built with [Astro](https://astro.build/), featuring:
 ```text
 /
 ├── public/
-│   └── _redirects        (Redirect rules)
+│   └── fonts/            (Custom fonts)
 ├── src/
 │   ├── layouts/          (Page layouts)
 │   ├── pages/            (Localized pages, e.g., [locale]/test.astro)
@@ -73,5 +73,7 @@ The build script uses `astro build --remote` to connect to the remote database d
 | `npm run dev`         | Start local development server   |
 | `npm run build`       | Build for production             |
 | `npm run preview`     | Preview the production build     |
+
+**Note:** Please use http://localhost:3005/en/ to access the local dev environment. 
 
 ---

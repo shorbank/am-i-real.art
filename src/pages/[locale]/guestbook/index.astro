@@ -1,6 +1,7 @@
 ---
-import { t } from "../../i18n";
-import Layout from "../../layouts/Guestbook.astro";
+import Layout from "../../../layouts/Guestbook.astro";
+import { t } from "../../../i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 export async function getStaticPaths() {
   return [{ params: { locale: "en" } }, { params: { locale: "de" } }];
@@ -12,7 +13,9 @@ const { locale } = Astro.params;
 <Layout>
   <div class="relative h-screen w-screen overflow-hidden bg-white text-black">
     <h1 class="absolute z-10 top-6 left-6 text-xl font-bold">{t(locale, "guestbook.title")}</h1>
-    <p class="absolute z-10 top-16 left-6">{t(locale, "guestbook.text")}</p>
+    <a class="text-blue-500" href={getRelativeLocaleUrl(locale, "guestbook/new")}>
+      {t(locale, "guestbook.new_entry")}
+    </a>
 
     <div
       id="panel-container"

@@ -8,6 +8,6 @@
   },
   "guestbook": {
     "title": "Guestbook",
-    "text": "Hi I'm a book for guests"
+    "new_entry": "New Entry"
   }
 }

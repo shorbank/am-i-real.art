@@ -1,7 +1,7 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import Layout from "../../../layouts/Layout.astro";
 import { db, Comment } from 'astro:db';
-import { t } from "../../i18n";
+import { t } from "../../../i18n";
 
 const { locale } = Astro.params;
 
@@ -23,7 +23,18 @@ const comments = await db.select().from(Comment).orderBy(Comment.createdAt);
 ---
 
 <Layout>
-  <h1 class="mt-8 font-semibold">Leave a Comment</h1>
+  <h1 class="mb-8 flex flex-col">
+    <span class="font-balete-italic text-4xl">Was hat dich berührt?</span>
+    <span class="font-balete-black text-4xl">Was bleibt zurück?</span>
+    <span class="font-balete-italic text-4xl">Woran wirst du dich erinnern?</span>
+  </h1>
+  <p>
+    Bevor du weiterfährst, lass uns wissen, dass du hier warst.
+    <br><br>
+    Schreib uns ein paar Worte, ein Gefühl, eine Frage. Was bedeutet es für dich, in einem Zwischenraum zu sein?
+    <br><br>
+    Dieser Eintrag ist Teil der Ausstellung. Auch deine Spuren machen sie real.
+  </p>
   <form method="POST" class="grid gap-2" style="max-width: 400px;">
     <label for="author">Your name</label>
     <input id="author" name="author" required />
@@ -31,7 +42,7 @@ const comments = await db.select().from(Comment).orderBy(Comment.createdAt);
     <label for="body">Your comment</label>
     <textarea id="body" name="body" rows="3" required></textarea>
 
-    <button type="submit">Submit</button>
+    <button class="bg-black text-white py-2 w-50 uppercase font-semibold" type="submit">Submit</button>
   </form>
 
   <h2 class="mt-8 font-semibold">Guestbook Comments</h2>

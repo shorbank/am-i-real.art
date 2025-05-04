@@ -1,13 +1,13 @@
 {
   "index": {
-    "title": "Gestört Willkommen!"
+    "title": "Willkommen!"
   },
   "about": {
-    "title": "Gestört Über uns",
-    "text": "Gestört Das ist die deutsche About-Seite."
+    "title": "Über uns",
+    "text": "Das ist die deutsche About-Seite."
   },
   "guestbook": {
     "title": "Gästebuch",
-    "text": "Hallo ich bin ein Buch für Gäste"
+    "new_entry": "Neuer Eintrag"
   }
 }

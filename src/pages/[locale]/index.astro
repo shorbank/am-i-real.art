@@ -11,11 +11,13 @@ const { locale } = Astro.params;
 ---
 
 <Layout>
-  <h1>{t(locale, "index.title")}</h1>
-  <a href={getRelativeLocaleUrl(locale, "about")}>
-    {t(locale, "about.title")}
-  </a>
-  <a class="text-red-500" href={getRelativeLocaleUrl(locale, "guestbook")}>
-    {t(locale, "about.title")}
-  </a>
+  <h1 class="text-2xl mb-5 font-semibold">{t(locale, "index.title")}</h1>
+  <div class="flex flex-col">
+    <a class="text-blue-500" href={getRelativeLocaleUrl(locale, "about")}>
+      {t(locale, "about.title")}
+    </a>
+    <a class="text-blue-500" href={getRelativeLocaleUrl(locale, "guestbook")}>
+      {t(locale, "guestbook.title")}
+    </a>
+  </div>
 </Layout>

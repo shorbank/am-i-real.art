@@ -1,0 +1,18 @@
+---
+const { comment, zPos, posClass, locale } = Astro.props;
+---
+<div
+  class="panel absolute top-1/2 left-1/2 w-full h-[150vw] grid grid-cols-2 grid-rows-3 text-black text-xl font-bold md:grid-cols-4 md:grid-rows-3 md:h-[75vw]"
+  style={`transform: translate3d(-50%, -50%, ${zPos}px); opacity: 0;`}
+  data-z={zPos}
+>
+  <div class={`${posClass} windowpanel`}>
+    <div class="title-bar">
+      <span>{comment.author}</span>
+    </div>
+    <div class="content">
+      <p>{comment.body}</p>
+      <p>{new Date(comment.createdAt).toLocaleDateString(locale)}</p>
+    </div>
+  </div>
+</div>

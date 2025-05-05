@@ -13,7 +13,19 @@ const { locale } = Astro.params;
 const comments = await db
   .select()
   .from(Comment)
-  .orderBy(Comment.createdAt);
+  .orderBy(Comment.createdAt)
+  .limit(95); // Obergrenze
+
+const MIN_Z = -20000;
+const MAX_Z = 1000;
+const panelCount = comments.length;
+const Z_STEP = (MAX_Z - MIN_Z) / panelCount;
+
+const classCycle = [
+  "position-c2", "position-b2", "position-c3", "position-a3",
+  "position-b1", "position-c4", "position-a2", "position-a4",
+  "position-b3", "position-c1", "position-b4", "position-a1"
+];
 ---
 
 <Layout>
@@ -26,113 +38,86 @@ const comments = await db
     <div
       id="panel-container"
       class="fixed top-1/2 left-1/2 w-full h-[60%] max-w-[102.4rem] -translate-x-1/2 -translate-y-1/2 pointer-events-none perspective-[1000px] [transform-style:preserve-3d]">
+      {comments.map((c, i) => {
+        const zPos = MIN_Z + i * Z_STEP;
+        const posClass = classCycle[i % classCycle.length];
+        return (
+          <div
+            class="panel absolute top-1/2 left-1/2 w-full h-[150vw] grid grid-cols-2 grid-rows-3 text-black text-xl font-bold md:grid-cols-4 md:grid-rows-3 md:h-[75vw]"
+            style={`transform: translate3d(-50%, -50%, ${zPos}px); opacity: 0;`}
+            data-z={zPos}
+          >
+            <div class={`${posClass} windowpanel`}>
+              <div class="title-bar">
+                <span>{c.author}</span>
+              </div>
+              <div class="content">
+                <p>{c.body}</p>
+                <p>{new Date(c.createdAt).toLocaleDateString(locale)}</p>
+              </div>
+            </div>
+          </div>
+        );
+      })}
     </div>
 
-    <ul class="kommentar-box opacity-0 bottom-10 left-6 bg-white/80 p-4 rounded max-w-xl backdrop-blur-sm">
-      {comments.map((c) => (
-        <li class="mb-2">
-          <strong>{c.author}</strong>: {c.body}
-          <em class="block text-sm text-gray-600">
-            ({new Date(c.createdAt).toLocaleDateString(locale)})
-          </em>
-        </li>
-      ))}
-    </ul>
-  </div>
+    <script type="module" is:inline>
+      const MIN_Z = -20000;
+      const MAX_Z = 1000;
+      let speed = 1.5;
+      let scrollTimeout;
 
-  <script type="module" is:inline>
-    const PANEL_COUNT = 95;
-    const MIN_Z = -20000;
-    const MAX_Z = 1000;
-    const Z_STEP = 220;
-
-    const classCycle = [
-      "position-c2", "position-b2", "position-c3", "position-a3",
-      "position-b1", "position-c4", "position-a2", "position-a4",
-      "position-b3", "position-c1", "position-b4", "position-a1"
-    ];
-
-    let speed = 1.5;
-    let scrollTimeout;
-
-    const container = document.getElementById("panel-container");
-    const panels = [];
-
-    for (let i = 0; i < PANEL_COUNT; i++) {
-      const panel = document.createElement("div");
-      panel.className = "panel absolute top-1/2 left-1/2 w-full h-[150vw] grid grid-cols-2 grid-rows-3 text-black text-xl font-bold md:grid-cols-4 md:grid-rows-3 md:h-[75vw]";
-
-      const windowpanel = document.createElement("div");
-      windowpanel.className = `${classCycle[i % classCycle.length]} windowpanel`;
-
-      windowpanel.innerHTML = `
-        <div class="title-bar">
-          <span>Author</span>
-        </div>
-        <div class="content">
-          <p>Body ${i + 1}</p>
-          <p>Date</p>
-        </div>
-      `;
-
-      panel.appendChild(windowpanel);
-
-      const zPos = MIN_Z + i * Z_STEP;
-      panel.style.transform = `translate3d(-50%, -50%, ${zPos}px)`;
-      panel.zPosition = zPos;
-      panel.style.opacity = "0";
-
-      container.appendChild(panel);
-      panels.push(panel);
-    }
-
-    function animate() {
-      panels.forEach((panel) => {
-        panel.zPosition += speed;
-
-        if (speed > 0 && panel.zPosition > MAX_Z) {
-          panel.zPosition = MIN_Z;
-        } else if (speed < 0 && panel.zPosition < MIN_Z) {
-          panel.zPosition = MAX_Z;
-        }
-
-        let opacity = 0;
-        if (panel.zPosition > -2000 && panel.zPosition < -1700) {
-          opacity = (panel.zPosition + 2000) / 300;
-        } else if (panel.zPosition >= -1700 && panel.zPosition <= MAX_Z) {
-          opacity = 1;
-        } else {
-          opacity = 0;
-        }
-
-        panel.style.opacity = opacity.toFixed(2);
-        panel.style.transform = `translate3d(-50%, -50%, ${panel.zPosition}px)`;
+      const panels = Array.from(document.querySelectorAll(".panel"));
+      panels.forEach(panel => {
+        panel.zPosition = parseFloat(panel.dataset.z);
       });
 
-      requestAnimationFrame(animate);
-    }
+      function animate() {
+        panels.forEach((panel) => {
+          panel.zPosition += speed;
 
-    animate();
+          if (speed > 0 && panel.zPosition > MAX_Z) {
+            panel.zPosition = MIN_Z;
+          } else if (speed < 0 && panel.zPosition < MIN_Z) {
+            panel.zPosition = MAX_Z;
+          }
 
-    window.addEventListener("wheel", (event) => {
-      const scrollDelta = event.deltaY;
+          let opacity = 0;
+          if (panel.zPosition > -2000 && panel.zPosition < -1700) {
+            opacity = (panel.zPosition + 2000) / 300;
+          } else if (panel.zPosition >= -1700 && panel.zPosition <= MAX_Z) {
+            opacity = 1;
+          }
 
-      if (scrollDelta > 0) {
-        speed = Math.min(speed + 2, 30);
-      } else {
-        speed = Math.max(speed - 2, -30);
+          panel.style.opacity = opacity.toFixed(2);
+          panel.style.transform = `translate3d(-50%, -50%, ${panel.zPosition}px)`;
+        });
+
+        requestAnimationFrame(animate);
       }
 
-      clearTimeout(scrollTimeout);
+      animate();
 
-      function decaySpeed() {
-        if (Math.abs(speed) > 5) {
-          speed += speed > 0 ? -1 : 1;
-          scrollTimeout = setTimeout(decaySpeed, 50);
+      window.addEventListener("wheel", (event) => {
+        const scrollDelta = event.deltaY;
+
+        if (scrollDelta > 0) {
+          speed = Math.min(speed + 2, 30);
+        } else {
+          speed = Math.max(speed - 2, -30);
         }
-      }
 
-      scrollTimeout = setTimeout(decaySpeed, 100);
-    });
-  </script>
+        clearTimeout(scrollTimeout);
+
+        function decaySpeed() {
+          if (Math.abs(speed) > 5) {
+            speed += speed > 0 ? -1 : 1;
+            scrollTimeout = setTimeout(decaySpeed, 50);
+          }
+        }
+
+        scrollTimeout = setTimeout(decaySpeed, 100);
+      });
+    </script>
+  </div>
 </Layout>

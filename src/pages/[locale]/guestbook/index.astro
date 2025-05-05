@@ -2,12 +2,18 @@
 import Layout from "../../../layouts/Guestbook.astro";
 import { t } from "../../../i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { db, Comment } from "astro:db";
 
 export async function getStaticPaths() {
   return [{ params: { locale: "en" } }, { params: { locale: "de" } }];
 }
 
 const { locale } = Astro.params;
+
+const comments = await db
+  .select()
+  .from(Comment)
+  .orderBy(Comment.createdAt);
 ---
 
 <Layout>
@@ -21,6 +27,17 @@ const { locale } = Astro.params;
       id="panel-container"
       class="fixed top-1/2 left-1/2 w-full h-[60%] max-w-[102.4rem] -translate-x-1/2 -translate-y-1/2 pointer-events-none perspective-[1000px] [transform-style:preserve-3d]">
     </div>
+
+    <ul class="kommentar-box opacity-0 bottom-10 left-6 bg-white/80 p-4 rounded max-w-xl backdrop-blur-sm">
+      {comments.map((c) => (
+        <li class="mb-2">
+          <strong>{c.author}</strong>: {c.body}
+          <em class="block text-sm text-gray-600">
+            ({new Date(c.createdAt).toLocaleDateString(locale)})
+          </em>
+        </li>
+      ))}
+    </ul>
   </div>
 
   <script type="module" is:inline>
@@ -35,7 +52,7 @@ const { locale } = Astro.params;
       "position-b3", "position-c1", "position-b4", "position-a1"
     ];
 
-    let speed = 2;
+    let speed = 1.5;
     let scrollTimeout;
 
     const container = document.getElementById("panel-container");
@@ -45,10 +62,20 @@ const { locale } = Astro.params;
       const panel = document.createElement("div");
       panel.className = "panel absolute top-1/2 left-1/2 w-full h-[150vw] grid grid-cols-2 grid-rows-3 text-black text-xl font-bold md:grid-cols-4 md:grid-rows-3 md:h-[75vw]";
 
-      const innerDiv = document.createElement("div");
-      innerDiv.className = classCycle[i % classCycle.length];
-      innerDiv.textContent = i + 1;
-      panel.appendChild(innerDiv);
+      const windowpanel = document.createElement("div");
+      windowpanel.className = `${classCycle[i % classCycle.length]} windowpanel`;
+
+      windowpanel.innerHTML = `
+        <div class="title-bar">
+          <span>Author</span>
+        </div>
+        <div class="content">
+          <p>Body ${i + 1}</p>
+          <p>Date</p>
+        </div>
+      `;
+
+      panel.appendChild(windowpanel);
 
       const zPos = MIN_Z + i * Z_STEP;
       panel.style.transform = `translate3d(-50%, -50%, ${zPos}px)`;

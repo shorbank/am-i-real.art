@@ -9,5 +9,11 @@
   "guestbook": {
     "title": "Gästebuch",
     "new_entry": "Neuer Eintrag"
+  },
+  "guestbook-new": {
+    "title1": "Was hat dich berührt?",
+    "title2": "Was bleibt zurück?",
+    "title3": "Woran wirst du dich erinnern?",
+    "intro-text": "Bevor du weiterfährst, lass uns wissen, dass du hier warst. Schreib uns ein paar Worte, ein Gefühl, eine Frage. Was bedeutet es für dich, in einem Zwischenraum zu sein? Dieser Eintrag ist Teil der Ausstellung. Auch deine Spuren machen sie real."
   }
 }

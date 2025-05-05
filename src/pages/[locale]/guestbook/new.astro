@@ -1,57 +1,61 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
-import { db, Comment } from 'astro:db';
 import { t } from "../../../i18n";
+import { db, Comment } from "astro:db";
 
 const { locale } = Astro.params;
 
-if (Astro.request.method === 'POST') {
+if (Astro.request.method === "POST") {
   const formData = await Astro.request.formData();
-  const author = formData.get('author');
-  const body = formData.get('body');
+  const author = formData.get("author");
+  const body = formData.get("body");
 
-  if (typeof author === 'string' && typeof body === 'string') {
+  if (typeof author === "string" && typeof body === "string" && body.trim()) {
     await db.insert(Comment).values({
-      author,
-      body,
+      author: author.trim() || "Unknown",
+      body: body.trim(),
       createdAt: new Date(),
     });
+
+    return Astro.redirect(`/${locale}/guestbook`);
   }
 }
-
-const comments = await db.select().from(Comment).orderBy(Comment.createdAt);
 ---
 
 <Layout>
   <h1 class="mb-8 flex flex-col">
-    <span class="font-balete-italic text-4xl">Was hat dich berührt?</span>
-    <span class="font-balete-black text-4xl">Was bleibt zurück?</span>
-    <span class="font-balete-italic text-4xl">Woran wirst du dich erinnern?</span>
+    <span class="font-balete-italic text-4xl">{t(locale, "guestbook-new.title1")}</span>
+    <span class="font-balete-black text-4xl">{t(locale, "guestbook-new.title2")}</span>
+    <span class="font-balete-italic text-4xl">{t(locale, "guestbook-new.title3")}</span>
   </h1>
-  <p>
-    Bevor du weiterfährst, lass uns wissen, dass du hier warst.
-    <br><br>
-    Schreib uns ein paar Worte, ein Gefühl, eine Frage. Was bedeutet es für dich, in einem Zwischenraum zu sein?
-    <br><br>
-    Dieser Eintrag ist Teil der Ausstellung. Auch deine Spuren machen sie real.
-  </p>
-  <form method="POST" class="grid gap-2" style="max-width: 400px;">
-    <label for="author">Your name</label>
-    <input id="author" name="author" required />
+  <p>{t(locale, "guestbook-new.intro-text")}</p>
+
+  <form method="POST" class="grid gap-2 mt-10 mb-20" style="max-width: 400px;">
+    <label for="author">Your name (optional)</label>
+    <input id="author" name="author" class="border border-black p-2" />
 
     <label for="body">Your comment</label>
-    <textarea id="body" name="body" rows="3" required></textarea>
+    <textarea
+      id="body"
+      name="body"
+      rows="3"
+      required
+      maxlength="250"
+      class="border border-black p-2"
+    ></textarea>
+    <p id="char-count" class="text-sm text-gray-600 text-right">0 / 250</p>
 
-    <button class="bg-black text-white py-2 w-50 uppercase font-semibold" type="submit">Submit</button>
+    <button class="bg-black text-white py-2 w-50 uppercase font-semibold" type="submit">
+      Submit
+    </button>
   </form>
 
-  <h2 class="mt-8 font-semibold">Guestbook Comments</h2>
-  <ul>
-    {comments.map((c) => (
-      <li>
-        <strong>{c.author}</strong>: {c.body}
-        <em> ({new Date(c.createdAt).toLocaleDateString(locale)})</em>
-      </li>
-    ))}
-  </ul>
+  <script is:inline>
+    const textarea = document.getElementById("body");
+    const counter = document.getElementById("char-count");
+
+    textarea.addEventListener("input", () => {
+      counter.textContent = `${textarea.value.length} / 250`;
+    });
+  </script>
 </Layout>

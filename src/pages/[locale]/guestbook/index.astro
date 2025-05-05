@@ -2,14 +2,18 @@
 import Layout from "../../../layouts/Guestbook.astro";
 import { t } from "../../../i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
+
 import { getLatestComments } from "../../../../lib/comments";
+import { guestbookImages as images } from "../../../../lib/assets";
+
+import CommentPanel from "../../../components/guestbook/CommentPanel.astro";
+import ImagePanel from "../../../components/guestbook/ImagePanel.astro";
 
 export async function getStaticPaths() {
   return [{ params: { locale: "en" } }, { params: { locale: "de" } }];
 }
 
 const { locale } = Astro.params;
-
 const comments = await getLatestComments();
 
 const MIN_Z = -20000;
@@ -34,25 +38,20 @@ const classCycle = [
     <div
       id="panel-container"
       class="fixed top-1/2 left-1/2 w-full h-[60%] max-w-[102.4rem] -translate-x-1/2 -translate-y-1/2 pointer-events-none perspective-[1000px] [transform-style:preserve-3d]">
+      
       {comments.map((c, i) => {
         const zPos = MIN_Z + i * Z_STEP;
         const posClass = classCycle[i % classCycle.length];
+
+        if ((i + 1) % 6 === 0) {
+          const imageSrc = images[i % images.length];
+          return (
+            <ImagePanel imageSrc={imageSrc} zPos={zPos} posClass={posClass} />
+          );
+        }
+
         return (
-          <div
-            class="panel absolute top-1/2 left-1/2 w-full h-[150vw] grid grid-cols-2 grid-rows-3 text-black text-xl font-bold md:grid-cols-4 md:grid-rows-3 md:h-[75vw]"
-            style={`transform: translate3d(-50%, -50%, ${zPos}px); opacity: 0;`}
-            data-z={zPos}
-          >
-            <div class={`${posClass} windowpanel`}>
-              <div class="title-bar">
-                <span>{c.author}</span>
-              </div>
-              <div class="content">
-                <p>{c.body}</p>
-                <p>{new Date(c.createdAt).toLocaleDateString(locale)}</p>
-              </div>
-            </div>
-          </div>
+          <CommentPanel comment={c} zPos={zPos} posClass={posClass} locale={locale} />
         );
       })}
     </div>
@@ -60,7 +59,7 @@ const classCycle = [
     <script type="module" is:inline>
       const MIN_Z = -20000;
       const MAX_Z = 1000;
-      let speed = 1.5;
+      let speed = 2;
       let scrollTimeout;
 
       const panels = Array.from(document.querySelectorAll(".panel"));

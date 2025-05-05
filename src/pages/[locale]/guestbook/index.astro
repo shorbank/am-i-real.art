@@ -2,7 +2,7 @@
 import Layout from "../../../layouts/Guestbook.astro";
 import { t } from "../../../i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { db, Comment } from "astro:db";
+import { getLatestComments } from "../../../../lib/comments";
 
 export async function getStaticPaths() {
   return [{ params: { locale: "en" } }, { params: { locale: "de" } }];
@@ -10,11 +10,7 @@ export async function getStaticPaths() {
 
 const { locale } = Astro.params;
 
-const comments = await db
-  .select()
-  .from(Comment)
-  .orderBy(Comment.createdAt)
-  .limit(95); // Obergrenze
+const comments = await getLatestComments();
 
 const MIN_Z = -20000;
 const MAX_Z = 1000;

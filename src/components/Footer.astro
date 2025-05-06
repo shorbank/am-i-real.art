@@ -1,3 +1,23 @@
-<div class="bg-zinc-500 px-2 py-3 text-white">
-    &copy; AM I REAL 2025
+---
+import { t } from "../i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const { locale } = Astro.params;
+---
+
+<div class="flex flex-row justify-between px-7 py-4 text-white">
+    <div class="flex flex-col">
+        <p class="mb-3 tracking-wide text-l">AM I REAL &copy; 2025</p>
+        <div class="flex flex-col gap-0.5 pb-8">
+            <a class="text-neutral-400" href={getRelativeLocaleUrl(locale, "imprint")}>
+                {t(locale, "imprint.title")}
+            </a>
+            <a class="text-neutral-400" href={getRelativeLocaleUrl(locale, "privacy-policy")}>
+                {t(locale, "privacy-policy.title")}
+            </a>
+        </div>
+    </div>
+    <div>
+        Social Media
+    </div>
 </div>

@@ -1,13 +1,14 @@
 ---
-// src/components/LanguageSwitcher.astro
-const currentLocale = Astro.url.pathname.split('/')[1];
-const otherLocale = currentLocale === 'de' ? 'en' : 'de';
-const currentPath = Astro.url.pathname.replace(`/${currentLocale}`, '') || '/';
+const { class: className } = Astro.props;
+
+const currentLocale = Astro.url.pathname.split("/")[1];
+const otherLocale = currentLocale === "de" ? "en" : "de";
+const currentPath = Astro.url.pathname.replace(`/${currentLocale}`, "") || "/";
 const switchUrl = `/${otherLocale}${currentPath}`;
 ---
 
-<nav class="bg-zinc-300 px-2 py-5" style="margin-bottom: 1rem;">
-  <a href={switchUrl}>
-    {otherLocale === 'de' ? 'Auf Deutsch wechseln' : 'Switch to English'}
+<div class={`bg-neutral-200 border border-black px-2 py-4 ${className ?? ''}`}>
+  <a href={switchUrl} class="text-xl">
+    {otherLocale === "de" ? "DE" : "EN"}
   </a>
-</nav>
+</div>

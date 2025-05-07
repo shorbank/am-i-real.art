@@ -1,14 +1,15 @@
 ---
 import { t } from "../i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import Icons from "./Icons.astro";
 
 const { locale } = Astro.params;
 ---
 
-<div class="flex flex-row justify-between px-7 py-4 text-white">
+<div class="flex flex-row justify-between px-7 py-8 text-white">
     <div class="flex flex-col">
         <p class="mb-3 tracking-wide text-l">AM I REAL &copy; 2025</p>
-        <div class="flex flex-col gap-0.5 pb-8">
+        <div class="flex flex-col gap-0.5 pb-3">
             <a class="text-neutral-400" href={getRelativeLocaleUrl(locale, "imprint")}>
                 {t(locale, "imprint.title")}
             </a>
@@ -18,6 +19,13 @@ const { locale } = Astro.params;
         </div>
     </div>
     <div>
-        Social Media
+        <a href="https://www.instagram.com/am.i.real.exhibition/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram: am.i.real.exhibition"
+        title="Instagram: am.i.real.exhibition"
+        class="group flex justify-center items-center bg-white p-3 text-black rounded-full aspect-square hover:bg-white/50 hover:text-white transition-colors">
+            <Icons name="instagram" width="20" height="20" class="transition-colors" />
+        </a>
     </div>
 </div>

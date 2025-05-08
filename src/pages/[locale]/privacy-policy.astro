@@ -10,8 +10,10 @@ const { locale } = Astro.params;
 ---
 
 <Layout>
-  <div class="h-[100vh]">
-    <h1>Privacy Policy</h1>
-    <p>{t(locale, "about.text")}</p>
+  <div class="pt-[70px]">
+    <div class="container mx-auto pt-10">
+      <h1 class="text-5xl font-balete-black mb-5">{t(locale, "privacy-policy.title")}</h1>
+      <p>Hier mehr Informationen zum Datenschutz</p>
+    </div>
   </div>
 </Layout>

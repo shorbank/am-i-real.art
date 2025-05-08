@@ -3,20 +3,20 @@ import Layout from "../../layouts/Layout.astro";
 import { t } from "../../i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
 
-export async function getStaticPaths() {
-  return [{ params: { locale: "en" } }, { params: { locale: "de" } }];
-}
-
 const { locale } = Astro.params;
 ---
 
 <Layout>
-  <h1 class="mb-5 font-oracle font-thin text-8xl">Complete <br>creative <br>control</h1>
-  <div class="flex flex-col">
-    <a class="text-blue-500" href={getRelativeLocaleUrl(locale, "about")}>
+  <div class="bg-red-500 px-8 py-10 min-h-[60dvh] text-white flex flex-col justify-end items-end">
+    <h1 class="text-right font-oracle text-7xl font-thin">
+      Complete <br> Creative <br> control
+    </h1>
+  </div>
+  <div class="flex flex-col mt-5 px-7 container mx-auto">
+    <a class="text-red-500" href={getRelativeLocaleUrl(locale, "about")}>
       {t(locale, "about.title")}
     </a>
-    <a class="text-blue-500" href={getRelativeLocaleUrl(locale, "guestbook")}>
+    <a class="text-red-500" href={getRelativeLocaleUrl(locale, "guestbook")}>
       {t(locale, "guestbook.title")}
     </a>
   </div>

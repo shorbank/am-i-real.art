@@ -27,5 +27,10 @@
   },
   "privacy-policy": {
     "title": "Datenschutzerklärung"
+  },
+  "404": {
+    "title": "Seite nicht gefunden",
+    "text": "Die Seite, die du suchst, existiert nicht.",
+    "back_to_home": "Zurück zur Startseite"
   }
 }

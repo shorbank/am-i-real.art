@@ -3,7 +3,7 @@ import { t } from "../i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import Icons from "./Icons.astro";
 
-const { locale } = Astro.params;
+const locale = Astro.props.locale || 'en';
 ---
 
 <div class="flex flex-row justify-between px-7 py-8 text-white">

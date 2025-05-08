@@ -1,9 +1,16 @@
 ---
-import Layout from "../layouts/Layout.astro"
+import Layout from "../layouts/Layout.astro";
+import { t } from "../i18n";
+
+const locale = Astro.url.pathname.split('/')[1] || 'en';
 ---
 
 <Layout>
-  <h1>Seite nicht gefunden</h1>
-  <p>Die Seite, die du suchst, existiert nicht.</p>
-  <a href="/">Zurück zur Startseite</a>
+  <div class="min-h-[calc(100dvh-162px)] flex flex-col justify-center">
+    <div class="container mx-auto pt-[70px] w-full text-center">
+      <h1 class="font-balete-black text-5xl mb-5">{t(locale, "404.title")}</h1>
+      <p>{t(locale, "404.text")}</p>
+      <a href="/">{t(locale, "404.back_to_home")}</a>
+    </div>
+  </div>
 </Layout>

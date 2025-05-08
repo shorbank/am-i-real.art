@@ -10,7 +10,7 @@
   },
   "about": {
     "title": "About Us",
-    "text": "This is the English about page."
+    "text": "This is the English About page."
   },
   "guestbook": {
     "title": "Guestbook",
@@ -20,12 +20,17 @@
     "title1": "What touched you?",
     "title2": "What remains?",
     "title3": "What will you remember?",
-    "intro-text": "Before you leave, let us know you were here. Write us a few words, a feeling, a question. What does it mean to you to be in an in-between space? This entry is part of the exhibition. Your traces make it real too."
+    "intro-text": "Before you move on, let us know you were here. Write us a few words, a feeling, a question. What does it mean to you to be in an in-between space? This entry is part of the exhibition. Your traces also make it real."
   },
   "imprint": {
     "title": "Imprint"
   },
   "privacy-policy": {
     "title": "Privacy Policy"
+  },
+  "404": {
+    "title": "Page not found",
+    "text": "The page you are looking for does not exist.",
+    "back_to_home": "Back to Home"
   }
 }

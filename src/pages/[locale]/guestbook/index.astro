@@ -9,10 +9,6 @@ import { guestbookImages as images } from "../../../../lib/assets";
 import CommentPanel from "../../../components/guestbook/CommentPanel.astro";
 import ImagePanel from "../../../components/guestbook/ImagePanel.astro";
 
-export async function getStaticPaths() {
-  return [{ params: { locale: "en" } }, { params: { locale: "de" } }];
-}
-
 const { locale } = Astro.params;
 const comments = await getLatestComments();
 

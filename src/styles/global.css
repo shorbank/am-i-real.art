@@ -18,9 +18,17 @@
        url("/fonts/Balete-MediumItalic.woff") format("woff");
 }
 
+@font-face {
+  font-family: "Oracle";
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/Oracle.woff2") format("woff2");
+}
+
 @theme {
   --font-balete-black: "Balete Black", sans-serif;
   --font-balete-italic: "Balete Medium Italic", sans-serif;
+  --font-oracle: "Oracle", sans-serif;
 
   --color-midnight: #121063;
   --color-tahiti: #3ab7bf;

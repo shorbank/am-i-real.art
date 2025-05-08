@@ -1,4 +1,10 @@
 {
+  "navbar": {
+    "home": "Home",
+    "about": "About Am I Real",
+    "exhibition": "Exhibition",
+    "guestbook": "Guestbook"
+  },
   "index": {
     "title": "Welcome!"
   },
@@ -9,5 +15,17 @@
   "guestbook": {
     "title": "Guestbook",
     "new_entry": "New Entry"
+  },
+  "guestbook-new": {
+    "title1": "What touched you?",
+    "title2": "What remains?",
+    "title3": "What will you remember?",
+    "intro-text": "Before you leave, let us know you were here. Write us a few words, a feeling, a question. What does it mean to you to be in an in-between space? This entry is part of the exhibition. Your traces make it real too."
+  },
+  "imprint": {
+    "title": "Imprint"
+  },
+  "privacy-policy": {
+    "title": "Privacy Policy"
   }
 }

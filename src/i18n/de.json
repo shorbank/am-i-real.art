@@ -23,7 +23,19 @@
     "intro-text": "Bevor du weiterfährst, lass uns wissen, dass du hier warst. Schreib uns ein paar Worte, ein Gefühl, eine Frage. Was bedeutet es für dich, in einem Zwischenraum zu sein? Dieser Eintrag ist Teil der Ausstellung. Auch deine Spuren machen sie real."
   },
   "imprint": {
-    "title": "Impressum"
+    "title": "Impressum",
+    "responsibility": "Verantwortlich für Inhalt und Umsetzung",
+    "contact": "Kontakt",
+    "concept": "Konzeption und Durchführung",
+    "legalInfo": "Rechtliche Hinweise",
+    "disclaimer": "Haftungsschluss",
+    "copyright": "Urheberrecht",
+    "responsibility-content": "Jana Schimak \n Projektleitung \n c/o Fachhochschule Salzburg \n MutliMediaArt / RAVE Masterprogramm \n Puch Urstein 1, 5412 Puch bei Hallein \n Österreich",
+    "contact-content": "amirealart [at] gmail.com \n Instagram: am.i.real.exhibition",
+    "concept-content": "Studierende des Masterstudiengangs MutliMediaArt (Audio, Film, Producing) \n und des RAVE Masterprogramms \n Fachhochschule Salzburg",
+    "legalInfo-content": "Diese Ausstellung ist ein nicht-kommerzielles, studentisches Projekt im Rahmen des Studienprogramms der Fachhochschule Salzburg. \n Für den Inhalt der Ausstellung und dieser begleitenden Informationen sind die jeweiligen Projektverantwortlichen verantwortlich.",
+    "disclaimer-content": "Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für externe Links. Für den Inhalt verlinkter Seiten sind ausschließlich deren Betreiber:innen verantwortlich.",
+    "copyright-content": "Alle gezeigten Werke und Texte sind urheberrechtlich geschützt. Jede Verwendung, Vervielfältigung oder Veröffentlichung außerhalb des Ausstellungsrahmens bedarf der Zustimmung der jeweiligen Uhrheber:innen."
   },
   "privacy-policy": {
     "title": "Datenschutzerklärung"

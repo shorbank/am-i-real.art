@@ -6,10 +6,6 @@ import LinkBox from "../../components/about/LinkBox.astro";
 import MarqueeText from "../../components/about/MarqueeText.astro";
 import PhysicsPile from "../../components/about/PhysicsPile.astro";
 
-export async function getStaticPaths() {
-  return [{ params: { locale: "en" } }, { params: { locale: "de" } }];
-}
-
 const { locale } = Astro.params;
 ---
 
@@ -42,6 +38,3 @@ const { locale } = Astro.params;
     <PhysicsPile />
   </div>
 </Layout>
-
-
- class="font-balete-black text-4xl">{t(locale, "about.title")}

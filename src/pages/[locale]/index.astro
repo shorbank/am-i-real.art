@@ -7,11 +7,26 @@ const { locale } = Astro.params;
 ---
 
 <Layout>
-  <div class="bg-red-500 px-8 py-10 min-h-[60dvh] text-white flex flex-col justify-end items-end">
-    <h1 class="text-right font-oracle text-7xl font-thin">
-      Complete <br> Creative <br> control
-    </h1>
+  <div class="relative min-h-[60dvh] text-white flex items-end justify-end">
+    <picture>
+      <source media="(min-width: 1920px)" srcset="/images/Noise-4k.webp" />
+      <source media="(min-width: 768px)" srcset="/images/Noise-HD.webp" />
+      <img 
+        src="/images/Noise-Mobile.webp" 
+        alt="" 
+        class="absolute inset-0 w-full h-full object-cover"
+        loading="eager"
+        decoding="async"
+      />
+    </picture>
+
+    <div class="relative z-10 px-8 py-10 h-full">
+      <h1 class="text-right font-oracle text-7xl font-thin">
+        AM I REAL
+      </h1>
+    </div>
   </div>
+
   <div class="flex flex-col mt-5 px-7 container mx-auto">
     <a class="text-red-500" href={getRelativeLocaleUrl(locale, "about")}>
       {t(locale, "about.title")}

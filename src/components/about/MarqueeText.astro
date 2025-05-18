@@ -1,0 +1,73 @@
+---
+import { t } from "../../i18n";
+
+const { locale } = Astro.params;
+---
+
+<div class="font-balete-black overflow-hidden relative h-[45px] md:h-[50px]">
+  <div class="scroll-track">
+    <div class="item">{t(locale, "about.callout1")}</div>
+    <div class="item">{t(locale, "about.callout1")}</div>
+    <div class="item">{t(locale, "about.callout1")}</div>
+    <div class="item">{t(locale, "about.callout1")}</div>
+    <div class="item">{t(locale, "about.callout1")}</div>
+    <div class="item">{t(locale, "about.callout1")}</div>
+    <div class="item">{t(locale, "about.callout1")}</div>
+    <div class="item">{t(locale, "about.callout1")}</div>
+    <div class="item">{t(locale, "about.callout1")}</div>
+    <div class="item">{t(locale, "about.callout1")}</div>
+  </div>
+</div>
+
+<div class="font-balete-italic overflow-hidden relative h-[45px] md:h-[50px]">
+  <div class="scroll-track" style="animation-direction: reverse;">
+    <div class="item">{t(locale, "about.callout2")}</div>
+    <div class="item">{t(locale, "about.callout2")}</div>
+    <div class="item">{t(locale, "about.callout2")}</div>
+    <div class="item">{t(locale, "about.callout2")}</div>
+    <div class="item">{t(locale, "about.callout2")}</div>
+    <div class="item">{t(locale, "about.callout2")}</div>
+    <div class="item">{t(locale, "about.callout2")}</div>
+    <div class="item">{t(locale, "about.callout2")}</div>
+    <div class="item">{t(locale, "about.callout2")}</div>
+    <div class="item">{t(locale, "about.callout2")}</div>
+  </div>
+</div>
+
+<style>
+.scroll-track {
+  display: flex;
+  animation: scrollLoop 100s linear infinite;
+  width: fit-content;
+  --scroll-distance: -2050px;
+}
+
+@media (min-width: 768px) {
+  .scroll-track {
+    --scroll-distance: -2250px;
+  }
+}
+
+@keyframes scrollLoop {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(var(--scroll-distance)); }
+}
+
+.item {
+  width: 410px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  font-size: 2.75rem;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .item {
+    width: 450px;
+    height: 50px;
+    font-size: 3rem;
+  }
+}
+</style>

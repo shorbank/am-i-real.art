@@ -9,8 +9,12 @@
     "title": "Willkommen!"
   },
   "about": {
-    "title": "Über uns",
-    "text": "Das ist die deutsche About-Seite."
+    "title1": "Eine Kunst",
+    "title2": "ausstellung",
+    "title3": "über das",
+    "title4": "Dazwischen Sein.",
+    "callout1": "Bist du überhaupt da?",
+    "callout2": "Oder bist du schon unterwegs?"
   },
   "guestbook": {
     "title": "Gästebuch",

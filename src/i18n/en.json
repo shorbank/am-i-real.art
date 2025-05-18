@@ -9,21 +9,33 @@
     "title": "Welcome!"
   },
   "about": {
-    "title": "About Us",
-    "text": "This is the English About page."
+    "title": "About us",
+    "text": "This is the German About page."
   },
   "guestbook": {
     "title": "Guestbook",
     "new_entry": "New Entry"
   },
   "guestbook-new": {
-    "title1": "What touched you?",
+    "title1": "What moved you?",
     "title2": "What remains?",
     "title3": "What will you remember?",
-    "intro-text": "Before you move on, let us know you were here. Write us a few words, a feeling, a question. What does it mean to you to be in an in-between space? This entry is part of the exhibition. Your traces also make it real."
+    "intro-text": "Before you move on, let us know you were here. Leave us a few words, a feeling, a question. What does it mean to you to be in a space in between? This entry is part of the exhibition. Your traces make it real, too."
   },
   "imprint": {
-    "title": "Imprint"
+    "title": "Imprint",
+    "responsibility": "Responsible for content and implementation",
+    "contact": "Contact",
+    "concept": "Concept and Execution",
+    "legalInfo": "Legal Information",
+    "disclaimer": "Disclaimer",
+    "copyright": "Copyright",
+    "responsibility-content": "Jana Schimak \n Project Lead \n c/o Salzburg University of Applied Sciences \n MultiMediaArt / RAVE Master's Program \n Puch Urstein 1, 5412 Puch bei Hallein \n Austria",
+    "contact-content": "amirealart [at] gmail.com \n Instagram: am.i.real.exhibition",
+    "concept-content": "Students of the Master’s degree program MultiMediaArt (Audio, Film, Producing) \n and the RAVE Master’s Program \n Salzburg University of Applied Sciences",
+    "legalInfo-content": "This exhibition is a non-commercial student project as part of the academic program at the Salzburg University of Applied Sciences.\n The respective project leads are responsible for the content of the exhibition and accompanying information.",
+    "disclaimer-content": "Despite careful content control, we assume no liability for external links. The operators of the linked pages are solely responsible for their content.",
+    "copyright-content": "All works and texts shown are protected by copyright. Any use, reproduction, or publication outside the scope of the exhibition requires the permission of the respective authors."
   },
   "privacy-policy": {
     "title": "Privacy Policy"

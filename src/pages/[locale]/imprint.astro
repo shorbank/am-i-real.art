@@ -6,10 +6,27 @@ const { locale } = Astro.params;
 ---
 
 <Layout>
-  <div class="pt-[70px]">
-    <div class="container mx-auto pt-10">
-      <h1 class="text-5xl font-balete-black mb-5">{t(locale, "imprint.title")}</h1>
-      <p>Hier mehr Informationen zum Impressum</p>
+  <div class="py-[70px]">
+    <div class="container mx-auto pt-10 px-7">
+      <h1 class="text-5xl font-balete-black mb-12">{t(locale, "imprint.title")}</h1>
+
+      <h2 class="font-bold">{t(locale, "imprint.responsibility")}</h2>
+      <p class="mb-6 whitespace-pre-line">{t(locale, "imprint.responsibility-content")}</p>
+
+      <h2 class="font-bold">{t(locale, "imprint.contact")}</h2>
+      <p class="mb-6 whitespace-pre-line">{t(locale, "imprint.contact-content")}</p>
+
+      <h2 class="font-bold">{t(locale, "imprint.concept")}</h2>
+      <p class="mb-6 whitespace-pre-line">{t(locale, "imprint.concept-content")}</p>
+
+      <h2 class="font-bold">{t(locale, "imprint.legalInfo")}</h2>
+      <p class="mb-6 whitespace-pre-line">{t(locale, "imprint.legalInfo-content")}</p>
+
+      <h2 class="font-bold">{t(locale, "imprint.disclaimer")}</h2>
+      <p class="mb-6 whitespace-pre-line">{t(locale, "imprint.disclaimer-content")}</p>
+
+      <h2 class="font-bold">{t(locale, "imprint.copyright")}</h2>
+      <p class="mb-6 whitespace-pre-line">{t(locale, "imprint.copyright-content")}</p>
     </div>
   </div>
 </Layout>

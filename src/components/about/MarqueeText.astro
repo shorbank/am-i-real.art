@@ -1,34 +1,36 @@
 ---
+import { t } from "../../i18n";
 
+const { locale } = Astro.params;
 ---
 
 <div class="font-balete-black overflow-hidden relative h-[45px] md:h-[50px]">
   <div class="scroll-track">
-    <div class="item">Bist du überhaupt da?</div>
-    <div class="item">Bist du überhaupt da?</div>
-    <div class="item">Bist du überhaupt da?</div>
-    <div class="item">Bist du überhaupt da?</div>
-    <div class="item">Bist du überhaupt da?</div>
-    <div class="item">Bist du überhaupt da?</div>
-    <div class="item">Bist du überhaupt da?</div>
-    <div class="item">Bist du überhaupt da?</div>
-    <div class="item">Bist du überhaupt da?</div>
-    <div class="item">Bist du überhaupt da?</div>
+    <div class="item">{t(locale, "about.callout1")}</div>
+    <div class="item">{t(locale, "about.callout1")}</div>
+    <div class="item">{t(locale, "about.callout1")}</div>
+    <div class="item">{t(locale, "about.callout1")}</div>
+    <div class="item">{t(locale, "about.callout1")}</div>
+    <div class="item">{t(locale, "about.callout1")}</div>
+    <div class="item">{t(locale, "about.callout1")}</div>
+    <div class="item">{t(locale, "about.callout1")}</div>
+    <div class="item">{t(locale, "about.callout1")}</div>
+    <div class="item">{t(locale, "about.callout1")}</div>
   </div>
 </div>
 
 <div class="font-balete-italic overflow-hidden relative h-[45px] md:h-[50px]">
   <div class="scroll-track" style="animation-direction: reverse;">
-    <div class="item">Oder bist du schon unterwegs?</div>
-    <div class="item">Oder bist du schon unterwegs?</div>
-    <div class="item">Oder bist du schon unterwegs?</div>
-    <div class="item">Oder bist du schon unterwegs?</div>
-    <div class="item">Oder bist du schon unterwegs?</div>
-    <div class="item">Oder bist du schon unterwegs?</div>
-    <div class="item">Oder bist du schon unterwegs?</div>
-    <div class="item">Oder bist du schon unterwegs?</div>
-    <div class="item">Oder bist du schon unterwegs?</div>
-    <div class="item">Oder bist du schon unterwegs?</div>
+    <div class="item">{t(locale, "about.callout2")}</div>
+    <div class="item">{t(locale, "about.callout2")}</div>
+    <div class="item">{t(locale, "about.callout2")}</div>
+    <div class="item">{t(locale, "about.callout2")}</div>
+    <div class="item">{t(locale, "about.callout2")}</div>
+    <div class="item">{t(locale, "about.callout2")}</div>
+    <div class="item">{t(locale, "about.callout2")}</div>
+    <div class="item">{t(locale, "about.callout2")}</div>
+    <div class="item">{t(locale, "about.callout2")}</div>
+    <div class="item">{t(locale, "about.callout2")}</div>
   </div>
 </div>
 

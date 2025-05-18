@@ -21,7 +21,7 @@ const currentLocale = validLocales.includes(locale) ? locale : 'en';
 	<body>
 		<NavBar locale={currentLocale} />
 		<main>
-			<LanguageSwitcher class="fixed min-w-[3rem] right-0 top-[65dvh] z-50" />
+			<LanguageSwitcher class="fixed min-w-[2rem] right-0 top-[65dvh] z-50" />
 			<slot />
 		</main>
 		<footer class="bg-black">

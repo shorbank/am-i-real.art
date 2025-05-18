@@ -13,10 +13,10 @@ const { locale } = Astro.params;
   <div class="pt-[70px]">
     <div class="container mx-auto px-8">
       <h1 class="flex flex-col text-4xl mb-12 max-w-[250px] w-full">
-        <span class="font-balete-black self-start">Eine Kunst</span>
-        <span class="font-balete-black self-end">ausstellung</span>
-        <span class="font-balete-italic self-center">über das</span>
-        <span class="font-balete-italic self-start">Dazwischen-Sein.</span>
+        <span class="font-balete-black self-start">{t(locale, "about.title1")}</span>
+        <span class="font-balete-black self-end">{t(locale, "about.title2")}</span>
+        <span class="font-balete-italic self-center">{t(locale, "about.title3")}</span>
+        <span class="font-balete-italic self-start">{t(locale, "about.title4")}</span>
       </h1>
       <p class="mb-4">
         Es gibt Orte, die nicht dafür gedacht sind, dass man bleibt. Orte ohne Ankunft, ohne Ziel, Schwellenräume, sogenannte liminal spaces.

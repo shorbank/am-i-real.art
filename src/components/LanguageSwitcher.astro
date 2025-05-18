@@ -7,8 +7,8 @@ const currentPath = Astro.url.pathname.replace(`/${currentLocale}`, "") || "/";
 const switchUrl = `/${otherLocale}${currentPath}`;
 ---
 
-<div class={`bg-neutral-200 border border-black px-2 py-4 ${className ?? ''}`}>
-  <a href={switchUrl} class="text-xl">
+<a href={switchUrl} class={`bg-neutral-200 border border-black flex justify-center items-center h-16 shadow ${className ?? ''}`}>
+  <span class="text-xl [writing-mode:vertical-rl] rotate-180">
     {otherLocale === "de" ? "DE" : "EN"}
-  </a>
-</div>
+  </span>
+</a>

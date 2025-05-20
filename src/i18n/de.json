@@ -46,6 +46,10 @@
   "privacy-policy": {
     "title": "Datenschutzerklärung"
   },
+  "assign-page": {
+    "title": "QR Code ist noch verfügbar",
+    "text": "Der QR-Code wurde noch keiner Seite zugewiesen. Er steht zur freien Verfügung."
+  },
   "404": {
     "title": "Seite nicht gefunden",
     "text": "Die Seite, die du suchst, existiert nicht.",

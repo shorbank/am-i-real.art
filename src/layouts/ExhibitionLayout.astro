@@ -1,0 +1,38 @@
+---
+import "../styles/global.css";
+import NavBar from "../components/NavBar.astro";
+import LanguageSwitcher from "../components/LanguageSwitcher.astro";
+import Footer from "../components/Footer.astro";
+import Tabs from "../components/Tabs.astro";
+
+const { children } = Astro.slots;
+
+const locale = Astro.url.pathname.split('/')[1];
+const validLocales = ['en', 'de'];
+const currentLocale = validLocales.includes(locale) ? locale : 'en';
+
+const { backgroundClass = '', backgroundStyle = '' } = Astro.props;
+---
+<!doctype html>
+<html lang={currentLocale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.webp" />
+    <meta name="generator" content={Astro.generator} />
+    <title>am i real - Exhibition</title>
+  </head>
+  <body class={`min-h-screen flex flex-col justify-between ${backgroundClass}`} style={backgroundStyle}>
+    <NavBar locale={currentLocale} />
+    <main>
+      <LanguageSwitcher class="fixed min-w-[2rem] right-0 top-[65dvh] z-50" />
+      <div class="pt-32 container mx-auto">
+        <Tabs />
+      </div>
+      <slot />
+    </main>
+    <footer class="bg-black">
+      <Footer locale={currentLocale} />
+    </footer>
+  </body>
+</html>

@@ -23,32 +23,41 @@ if (Astro.request.method === "POST") {
 ---
 
 <Layout>
-  <h1 class="mb-8 flex flex-col">
-    <span class="font-balete-italic text-4xl">{t(locale, "guestbook-new.title1")}</span>
-    <span class="font-balete-black text-4xl">{t(locale, "guestbook-new.title2")}</span>
-    <span class="font-balete-italic text-4xl">{t(locale, "guestbook-new.title3")}</span>
-  </h1>
-  <p>{t(locale, "guestbook-new.intro-text")}</p>
+  <div class="pt-[70px]">
+    <div class="container mx-auto pt-8">
+        <h1 class="mb-8 flex flex-col">
+        <span class="font-balete-italic text-4xl">{t(locale, "guestbook-new.title1")}</span>
+        <span class="font-balete-black text-4xl">{t(locale, "guestbook-new.title2")}</span>
+        <span class="font-balete-italic text-4xl">{t(locale, "guestbook-new.title3")}</span>
+        </h1>
+        <p>{t(locale, "guestbook-new.intro-text")}</p>
 
-  <form method="POST" class="grid gap-2 mt-10 mb-20" style="max-width: 400px;">
-    <label for="author">Your name (optional)</label>
-    <input id="author" name="author" class="border border-black p-2" />
+        <form method="POST" class="grid gap-2 mt-10 mb-20" style="max-width: 400px;">
+          <label for="author">Your name (optional)</label>
+          <input id="author" name="author" class="border border-black p-2" />
 
-    <label for="body">Your comment</label>
-    <textarea
-      id="body"
-      name="body"
-      rows="3"
-      required
-      maxlength="250"
-      class="border border-black p-2"
-    ></textarea>
-    <p id="char-count" class="text-sm text-gray-600 text-right">0 / 250</p>
+          <label for="body">Your comment</label>
+          <textarea
+            id="body"
+            name="body"
+            rows="3"
+            required
+            maxlength="250"
+            class="border border-black p-2"
+          ></textarea>
+          <p id="char-count" class="text-sm text-gray-600 text-right">0 / 250</p>
 
-    <button class="bg-black text-white py-2 w-50 uppercase font-semibold" type="submit">
-      Submit
-    </button>
-  </form>
+          <div class="text-sm mb-4">
+            <input type="checkbox" name="consent" />
+            <label for="consent">{t(locale, "guestbook-new.consent")}</label>
+          </div>
+
+          <button class="bg-black text-white py-2 w-40 font-semibold" type="submit">
+            {t(locale, "guestbook-new.submit")}
+          </button>
+        </form>
+    </div>
+  </div>
 
   <script is:inline>
     const textarea = document.getElementById("body");

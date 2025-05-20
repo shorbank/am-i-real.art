@@ -40,6 +40,10 @@
   "privacy-policy": {
     "title": "Privacy Policy"
   },
+  "assign-page": {
+    "title": "QR code is still available",
+    "text": "The QR code has not yet been assigned to a page. It is freely assignable."
+  },
   "404": {
     "title": "Page not found",
     "text": "The page you are looking for does not exist.",

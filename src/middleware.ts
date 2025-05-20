@@ -1,8 +1,13 @@
 import { defineMiddleware } from 'astro:middleware';
 
 const qrRedirects: Record<string, string> = {
-  '/XYZ1': '/about',
-  '/XYZ2': '/guestbook',
+  '/X2U73Q': '/assign-page',
+  '/GPHGS1': '/assign-page',
+  '/RY1EXM': '/assign-page',
+  '/JWGQ9K': '/assign-page',
+  '/GSP7WP': '/assign-page',
+  '/RX8PXF': '/assign-page',
+  '/H7BVJL': '/assign-page',
 };
 
 export const onRequest = defineMiddleware(async ({ url, preferredLocale, redirect }, next) => {

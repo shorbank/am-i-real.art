@@ -1,0 +1,35 @@
+---
+const rawPath = Astro.url.pathname;
+const currentPath = rawPath.replace(/\/$/, '');
+
+const langMatch = currentPath.match(/^\/(de|en)(\/|$)/);
+const langPrefix = langMatch ? `/${langMatch[1]}` : '';
+
+const tabs = [
+  { title: "Schwelle", path: `${langPrefix}/exhibition/schwelle` },
+  { title: "Wirrnis", path: `${langPrefix}/exhibition/wirrnis` },
+  { title: "Hingabe", path: `${langPrefix}/exhibition/hingabe` },
+];
+---
+
+<div class="px-2">
+  <ul class="flex justify-between mb-4" style="list-style: none;">
+    {
+      tabs.map((tab) => {
+        const tabPath = tab.path.replace(/\/$/, '');
+        const isActive = currentPath === tabPath;
+
+        return (
+          <li class={`px-5 py-1 mix-blend-multiply transition-colors duration-200 ${isActive ? 'bg-black text-white' : 'bg-neutral-300/50'}`}>
+            <a
+              href={tab.path}
+              class="font-balete-black text-xl md:text-4xl block transition-transform duration-150 active:scale-95"
+            >
+              {tab.title}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</div>

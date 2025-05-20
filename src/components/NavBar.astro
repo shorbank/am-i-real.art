@@ -3,6 +3,8 @@ import { t } from "../i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { navItems } from "../data/navItems";
 
+import AmIRealLogo from "./logo/am-i-real-logo.astro";
+
 const locale = Astro.props.locale || 'en';
 ---
 
@@ -10,7 +12,7 @@ const locale = Astro.props.locale || 'en';
   <div class="px-5 flex justify-between items-center h-full">
     <div class="logo">
       <a href="/" class="text-white text-3xl font-bold transition-colors duration-300">
-        <span class="font-balete-black select-none">Am I Real</span>
+        <AmIRealLogo width="50" height="50" class="transition-colors" />
       </a>
     </div>
 
@@ -104,7 +106,7 @@ const locale = Astro.props.locale || 'en';
 
   window.addEventListener("scroll", () => {
     if (window.scrollY > 50) {
-      header?.classList.add("bg-white/50", "shadow-md", "h-[80px]");
+      header?.classList.add("bg-white/80", "blurry", "shadow-md", "h-[80px]");
       header?.classList.remove("bg-transparent");
 
       links.forEach((link) => {
@@ -118,7 +120,7 @@ const locale = Astro.props.locale || 'en';
       });
       
     } else {
-      header?.classList.remove("bg-white/50", "shadow-md", "h-[80px]");
+      header?.classList.remove("bg-white/80", "blurry", "shadow-md", "h-[80px]");
       header?.classList.add("bg-transparent");
 
       links.forEach((link) => {
@@ -137,5 +139,9 @@ const locale = Astro.props.locale || 'en';
 <style>
   .burger-line-1, .burger-line-2, .burger-line-3 {
     transform-origin: center;
+  }
+
+  .blurry {
+    backdrop-filter: blur(5px);
   }
 </style>

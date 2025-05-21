@@ -25,14 +25,16 @@
   src: url("/fonts/Oracle.woff2") format("woff2");
 }
 
-@theme {
-  --font-balete-black: "Balete Black", sans-serif;
-  --font-balete-italic: "Balete Medium Italic", sans-serif;
-  --font-oracle: "Oracle", sans-serif;
+@layer theme {
+  :root {
+    --font-balete-black: "Balete", sans-serif;
+    --font-balete-italic: "Balete", sans-serif;
+    --font-oracle: "Oracle", sans-serif;
 
-  --color-midnight: #121063;
-  --color-tahiti: #3ab7bf;
-  --color-bermuda: #78dcca;
+    --color-midnight: #121063;
+    --color-tahiti: #3ab7bf;
+    --color-bermuda: #78dcca;
+  }
 }
 
 .panel {

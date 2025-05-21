@@ -1,10 +1,11 @@
 import type { APIRoute } from 'astro';
 
-export const GET: APIRoute = () => {
+export const GET: APIRoute = ({ params }) => {
+  const locale = params.locale;
   return new Response(null, {
     status: 301,
     headers: {
-      Location: '/exhibition/schwelle',
+      Location: `/${locale}/exhibition/schwelle`,
     },
   });
 };

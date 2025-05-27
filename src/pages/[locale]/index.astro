@@ -7,7 +7,7 @@ const { locale } = Astro.params;
 ---
 
 <Layout>
-  <div class="relative min-h-[60dvh] text-white flex items-end justify-end">
+  <div class="relative min-h-[100dvh] h-fit text-white flex items-center justify-start">
     <picture>
       <source media="(min-width: 1920px)" srcset="/images/Noise-4k.webp" />
       <source media="(min-width: 768px)" srcset="/images/Noise-HD.webp" />
@@ -20,19 +20,25 @@ const { locale } = Astro.params;
       />
     </picture>
 
-    <div class="relative z-10 px-8 py-10 h-full">
-      <h1 class="text-right font-oracle text-7xl font-thin">
-        AM I REAL
+    <div class="relative z-10 px-8 py-10 h-full flex flex-col items-start">
+      <h1 class="text-start text-6xl flex flex-col flex-nowrap">
+        <span class="font-balete-black">Kein Anfang.</span>
+        <span class="font-balete-black">Kein Ziel.</span>
+        <span class="font-balete-italic">nur dazwischen</span>
       </h1>
+      <div class="flex flex-col items-start mt-10 gap-6">
+        <a class="w-full uppercase font-oracle border-2 px-4 py-2" href={getRelativeLocaleUrl(locale, "about")}>
+          {t(locale, "navbar.about")}
+        </a>
+        <a class="w-full uppercase font-oracle border-2 px-4 py-2" href={getRelativeLocaleUrl(locale, "exhibition")}>
+          {t(locale, "navbar.exhibition")}
+        </a>
+        <a class="w-full uppercase font-oracle border-2 px-4 py-2" href={getRelativeLocaleUrl(locale, "guestbook")}>
+          {t(locale, "navbar.guestbook")}
+        </a>
+      </div>
     </div>
   </div>
 
-  <div class="flex flex-col mt-5 px-7 container mx-auto">
-    <a class="text-red-500" href={getRelativeLocaleUrl(locale, "about")}>
-      {t(locale, "about.title")}
-    </a>
-    <a class="text-red-500" href={getRelativeLocaleUrl(locale, "guestbook")}>
-      {t(locale, "guestbook.title")}
-    </a>
-  </div>
+
 </Layout>

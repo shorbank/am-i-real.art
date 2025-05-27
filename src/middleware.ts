@@ -3,13 +3,15 @@ import qrRedirects from './data/qrRedirects';
 
 export const onRequest = defineMiddleware(async ({ url, preferredLocale, redirect }, next) => {
   const pathname = url.pathname;
-
-  if (qrRedirects[pathname]) {
-    return redirect(qrRedirects[pathname], 302);
-  }
-
-  const hasLocalePrefix = pathname.startsWith('/de/') || pathname.startsWith('/en/');
   const locale = preferredLocale || 'en';
+  const hasLocalePrefix = pathname.startsWith('/de/') || pathname.startsWith('/en/');
+
+  const target = qrRedirects[pathname];
+  if (target) {
+    const targetHasLocale = target.startsWith('/de/') || target.startsWith('/en/');
+    const finalTarget = targetHasLocale ? target : `/${locale}${target}`;
+    return redirect(finalTarget, 302);
+  }
 
   if (!hasLocalePrefix) {
     return redirect(`/${locale}${pathname}`, 302);

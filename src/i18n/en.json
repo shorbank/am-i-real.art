@@ -9,40 +9,78 @@
     "title": "Welcome!"
   },
   "about": {
-    "title": "About us",
-    "text": "This is the German About page."
+    "title1": "An art",
+    "title2": "exhibition",
+    "title3": "about the",
+    "title4": "in-between state.",
+    "callout1": "Are you really here?",
+    "callout2": "Or already on your way?"
   },
   "guestbook": {
     "title": "Guestbook",
     "new_entry": "New Entry"
   },
   "guestbook-new": {
-    "title1": "What moved you?",
-    "title2": "What remains?",
+    "title1": "What touched you?",
+    "title2": "What lingers?",
     "title3": "What will you remember?",
-    "intro-text": "Before you move on, let us know you were here. Leave us a few words, a feeling, a question. What does it mean to you to be in a space in between? This entry is part of the exhibition. Your traces make it real, too."
+    "intro-text": "Before you continue your journey, let us know you were here. Write us a few words, a feeling, a question. What does it mean to you to be in an in-between space? This entry is part of the exhibition. Your traces make it real, too.",
+    "consent": "My entry may be published.",
+    "submit": "Submit"
   },
   "imprint": {
     "title": "Imprint",
     "responsibility": "Responsible for content and implementation",
     "contact": "Contact",
-    "concept": "Concept and Execution",
+    "concept": "Concept and execution",
     "legalInfo": "Legal Information",
     "disclaimer": "Disclaimer",
     "copyright": "Copyright",
-    "responsibility-content": "Jana Schimak \n Project Lead \n c/o Salzburg University of Applied Sciences \n MultiMediaArt / RAVE Master's Program \n Puch Urstein 1, 5412 Puch bei Hallein \n Austria",
+    "responsibility-content": "Jana Schimak \n Project lead \n c/o Salzburg University of Applied Sciences \n MultiMediaArt / RAVE Master's Program \n Puch Urstein 1, 5412 Puch bei Hallein \n Austria",
     "contact-content": "amirealart [at] gmail.com \n Instagram: am.i.real.exhibition",
-    "concept-content": "Students of the Master’s degree program MultiMediaArt (Audio, Film, Producing) \n and the RAVE Master’s Program \n Salzburg University of Applied Sciences",
-    "legalInfo-content": "This exhibition is a non-commercial student project as part of the academic program at the Salzburg University of Applied Sciences.\n The respective project leads are responsible for the content of the exhibition and accompanying information.",
-    "disclaimer-content": "Despite careful content control, we assume no liability for external links. The operators of the linked pages are solely responsible for their content.",
-    "copyright-content": "All works and texts shown are protected by copyright. Any use, reproduction, or publication outside the scope of the exhibition requires the permission of the respective authors."
+    "concept-content": "Students of the MultiMediaArt (Audio, Film, Producing) Master’s Program \n and the RAVE Master’s Program \n Salzburg University of Applied Sciences",
+    "legalInfo-content": "This exhibition is a non-commercial student project within the curriculum of the Salzburg University of Applied Sciences. \n The respective project leads are responsible for the content of the exhibition and the accompanying information.",
+    "disclaimer-content": "Despite careful content control, we assume no liability for external links. The content of linked pages is the sole responsibility of their operators.",
+    "copyright-content": "All displayed works and texts are protected by copyright. Any use, reproduction or publication outside the scope of the exhibition requires the consent of the respective copyright holders."
   },
   "privacy-policy": {
-    "title": "Privacy Policy"
+    "title": "Privacy Policy",
+    "subtitle": "according to Art. 13 GDPR",
+    "responsibility": "1. Responsibility",
+    "responsibility-content": "Responsible for data processing on this website is: \n\n Jana Schimak \n Project lead \n c/o Salzburg University of Applied Sciences \n MultiMediaArt / RAVE Master's Program \n Puch Urstein 1, 5412 Puch bei Hallein \n Austria",
+    "disclaimer-text": "This website is part of a non-commercial student project within the Master’s Program at the Salzburg University of Applied Sciences. The project leads are responsible for the content and data processing. The university is not the data controller.",
+    "hosting": "2. Hosting",
+    "hosting-content": "The website is hosted by Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA. When the site is accessed, Vercel automatically collects the following data:",
+    "hosting-content2": "This data is processed to provide technical functionality and ensure system security (Art. 6 para. 1 lit. f GDPR). No data is merged with other sources. Privacy information by Vercel can be found at:",
+    "hosting-data1": "IP address of the requesting device",
+    "hosting-data2": "Date and time of access",
+    "hosting-data3": "Browser type and operating system",
+    "hosting-data4": "Referrer URL (if transmitted)",
+    "guestbook": "3. Guestbook Feature",
+    "guestbook-content": "Users can voluntarily leave a name (or pseudonym) and a freely chosen message. This information will be publicly displayed on the website.",
+    "guestbook-condition1": "Submission is based on your consent according to Art. 6 para. 1 lit. a GDPR.",
+    "guestbook-condition2": "No email addresses or further contact information is collected.",
+    "guestbook-condition3": "There is no disclosure to third parties.",
+    "guestbook-condition4": "Entries can be deleted upon request.",
+    "reach-measurement": "4. Reach Measurement",
+    "reach-measurement-content": "To measure reach anonymously, a local counter is increased with each page load. No personal data such as IP addresses or timestamps are stored. No tracking or profiling takes place.",
+    "cookies": "5. Cookies, Tracking and Third-Party Services",
+    "cookies-content": "This website does not use cookies, web analytics, or tracking tools. No third-party content is embedded, such as fonts from Google Fonts, YouTube videos, or Vimeo content. No external data is transmitted to third parties via embedded content.",
+    "your-rights": "6. Your Rights",
+    "your-rights-content1": "Data subjects have the following rights under the GDPR:",
+    "your-rights-content2": "To exercise your rights, please contact the address mentioned above.",
+    "your-rights1": "Access to the processed data (Art. 15 GDPR),",
+    "your-rights2": "Correction of incorrect data (Art. 16 GDPR),",
+    "your-rights3": "Erasure (Art. 17 GDPR),",
+    "your-rights4": "Restriction of processing (Art. 18 GDPR),",
+    "your-rights5": "Data portability (Art. 20 GDPR),",
+    "your-rights6": "Objection to processing (Art. 21 GDPR).",
+    "supervisoriy-authority": "7. Supervisory Authority",
+    "supervisoriy-authority-content": "According to Art. 77 GDPR, you have the right to file a complaint with a data protection authority. For Austria, the competent authority is: \n Austrian Data Protection Authority \n Barichgasse 40–42 \n 1030 Vienna"
   },
   "assign-page": {
-    "title": "QR code is still available",
-    "text": "The QR code has not yet been assigned to a page. It is freely assignable."
+    "title": "QR Code still available",
+    "text": "The QR code has not yet been assigned to a page. It is available for use."
   },
   "404": {
     "title": "Page not found",

@@ -16,6 +16,14 @@
     "callout1": "Bist du überhaupt da?",
     "callout2": "Oder bist du schon unterwegs?"
   },
+  "exhibition": {
+    "schwelle-title": "Schwelle",
+    "schwelle-content": "Du hast den ersten Schritt gemacht. Du stehst am Bahnhof und doch bist du noch nicht angekommen.\n\n Die Schwelle ist ein Moment des Innehaltens. Der letzte Blick zurück, das Gewicht einer Entscheidung, das Kribbeln des Unbekannten.\n\n Steigst du ein? Wohin wird dich der Zug bringen? \n\n Hier beginnt der Wandel. Die vertraute Welt liegt hinter dir. Zwischen Abschied und Aufbruch mischen sich Nostalgie, Angst, Hoffnung. \n\n Einfach umkehren, so tun, als wärst du nie gegangen, wäre das ein Fehler? Was lässt du zurück? Und was nimmst du mit?",
+    "wirrnis-title": "Wirrnis",
+    "wirrnis-content": "Willkommen im Chaos, du bist losgefahren. \n\n Der Zug rattert über die Gleise. Gedanken, Gefühle, Identität fliegen an dir vorbei. \n\n Nichts ist klar. Nichts bleibt, wie es war. Hier ist alles in Bewegung. Du kannst dich verirren, verlaufen, verlieren oder etwas finden, das du nie gesucht hast. \n\n Es ist laut. Es ist still. Es widerspricht sich selbst. \n Ein Ort des Zweifelns und der Möglichkeit. \n\n Du musst hier nicht wissen, wer du bist. \n Nur, dass du wirst.",
+    "hingabe-title": "Hingabe",
+    "hingabe-content": "Die Suche ist nicht zu Ende, aber sie hat ihre Schärfe verloren. Du bist angekommen. Vielleicht nicht dort, wo du dachtest. Aber an einem Ort, der sich ruhig anfühlt. \n\n Hingabe heißt nicht aufgeben, sondern annehmen. Die Dinge sind, wie sie sind. Und hier, in diesem Moment, fühlt sich das genug an. Atme. Tief ein. Tief aus. Schau dich um. Vielleicht ist das hier genug?"
+  },
   "guestbook": {
     "title": "Gästebuch",
     "new_entry": "Neuer Eintrag"

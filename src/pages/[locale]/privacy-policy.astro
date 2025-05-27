@@ -10,10 +10,61 @@ const { locale } = Astro.params;
 ---
 
 <Layout>
-  <div class="pt-[70px]">
-    <div class="container mx-auto pt-10">
+  <div class="py-[70px]">
+    <div class="container mx-auto pt-10 px-7">
       <h1 class="text-5xl font-balete-black mb-5">{t(locale, "privacy-policy.title")}</h1>
-      <p>Hier mehr Informationen zum Datenschutz</p>
+      <p class="mb-12">{t(locale, "privacy-policy.subtitle")}</p>
+
+      <h2 class="font-bold">{t(locale, "privacy-policy.responsibility")}</h2>
+      <p class="mb-4 whitespace-pre-line">{t(locale, "privacy-policy.responsibility-content")}</p>
+
+      <p class="font-bold mb-4">E-Mail: <a href="#" class="font-normal">amirealart [at] gmail.com</a></p>
+
+      <p class="mb-6">{t(locale, "privacy-policy.disclaimer-text")}</p>
+
+      <h2 class="font-bold">{t(locale, "privacy-policy.hosting")}</h2>
+      <p class="mb-2 whitespace-pre-line">{t(locale, "privacy-policy.hosting-content")}</p>
+      <ul class="list-disc pl-4 mb-6">
+        <li>{t(locale, "privacy-policy.hosting-data1")}</li>
+        <li>{t(locale, "privacy-policy.hosting-data2")}</li>
+        <li>{t(locale, "privacy-policy.hosting-data3")}</li>
+        <li>{t(locale, "privacy-policy.hosting-data4")}</li>
+      </ul>
+
+      <p class="mb-6">{t(locale, "privacy-policy.hosting-content")} <br>
+        <a href="https://vercel.com/legal/privacy-policy" class="text-blue-700 hover:underline">https://vercel.com/legal/privacy-policy</a>
+      </p>
+      
+      <h2 class="font-bold">{t(locale, "privacy-policy.guestbook")}</h2>
+      <p class="mb-2 whitespace-pre-line">{t(locale, "privacy-policy.guestbook-content")}</p>
+      <ul class="list-disc pl-4 mb-6">
+        <li>{t(locale, "privacy-policy.guestbook-condition1")}</li>
+        <li>{t(locale, "privacy-policy.guestbook-condition2")}</li>
+        <li>{t(locale, "privacy-policy.guestbook-condition3")}</li>
+        <li>{t(locale, "privacy-policy.guestbook-condition4")}</li>
+      </ul>
+
+      <h2 class="font-bold">{t(locale, "privacy-policy.reach-measurement")}</h2>
+      <p class="mb-6 whitespace-pre-line">{t(locale, "privacy-policy.reach-measurement-content")}</p>
+
+      <h2 class="font-bold">{t(locale, "privacy-policy.cookies")}</h2>
+      <p class="mb-6 whitespace-pre-line">{t(locale, "privacy-policy.cookies-content")}</p>
+
+      <h2 class="font-bold">{t(locale, "privacy-policy.your-rights")}</h2>
+      <p class="mb-2 whitespace-pre-line">{t(locale, "privacy-policy.your-rights-content1")}</p>
+      <ul class="list-disc pl-4 mb-6">
+        <li>{t(locale, "privacy-policy.your-rights1")}</li>
+        <li>{t(locale, "privacy-policy.your-rights2")}</li>
+        <li>{t(locale, "privacy-policy.your-rights3")}</li>
+        <li>{t(locale, "privacy-policy.your-rights4")}</li>
+      </ul>
+      <p class="mb-6 whitespace-pre-line">{t(locale, "privacy-policy.your-rights-content2")}</p>
+
+      <h2 class="font-bold">{t (locale, "privacy-policy.supervisoriy-authority")}</h2>
+      <p class="mb-4 whitespace-pre-line">{t(locale, "privacy-policy.supervisoriy-authority-content")} <br>
+        <a href="https://www.dsb.gv.at" class="text-blue-700 hover:underline">https://www.dsb.gv.at</a>
+      </p>
+
     </div>
   </div>
 </Layout>

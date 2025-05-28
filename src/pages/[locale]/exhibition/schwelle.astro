@@ -16,9 +16,53 @@ const { locale } = Astro.params;
 <ExhibitionLayout backgroundClass={bgColor}>
   <div class="flex flex-col justify-between min-h-[90dvh]">
     <div class="container mx-auto px-6 pt-10 mb-44">
-      <p class="whitespace-pre-line text-l md:text-xl">
+      <p class="whitespace-pre-line text-l md:text-xl mb-8">
         {t(locale, "exhibition.schwelle-content")}
       </p>
+      <div class="flex flex-col gap-10">
+        <img 
+          src="/images/raum1/3820fa9a-8665-44c2-82be-a5ba9e0beb27.jpeg" 
+          alt="" 
+          class="h-full object-cover"
+          loading="eager"
+          decoding="async"
+        />
+        <img 
+          src="/images/raum1/bef5504c-f94a-47f1-a4c5-6b13614e1fe3.jpeg" 
+          alt="" 
+          class="h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+        <img 
+          src="/images/raum1/Raum1_Lena.png" 
+          alt="" 
+          class="h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+        <img 
+          src="/images/raum1/vlcsnap-2025-05-27-16h55m01s230.png" 
+          alt="" 
+          class="h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+        <img 
+          src="/images/raum1/vlcsnap-2025-05-27-16h55m21s283.png" 
+          alt="" 
+          class="h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+        <img 
+          src="/images/raum1/vlcsnap-2025-05-27-16h55m32s340.png" 
+          alt="" 
+          class="h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
     </div>
     <div>
       <MarqueeText bgColor="bg-[#67A789]" textColor="text-[#1A3F35]" />

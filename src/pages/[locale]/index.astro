@@ -7,7 +7,7 @@ const { locale } = Astro.params;
 ---
 
 <Layout>
-  <div class="relative min-h-[100dvh] h-fit text-white flex items-center justify-start">
+  <div class="relative min-h-[100dvh] h-fit text-white fl justify-start">
     <picture>
       <source media="(min-width: 1920px)" srcset="/images/Noise-4k.webp" />
       <source media="(min-width: 768px)" srcset="/images/Noise-HD.webp" />
@@ -20,22 +20,24 @@ const { locale } = Astro.params;
       />
     </picture>
 
-    <div class="relative z-10 px-8 py-10 h-full flex flex-col items-start">
-      <h1 class="text-start text-6xl flex flex-col flex-nowrap">
-        <span class="font-balete-black">Kein Anfang.</span>
-        <span class="font-balete-black">Kein Ziel.</span>
-        <span class="font-balete-italic italic">nur dazwischen</span>
-      </h1>
-      <div class="flex flex-col items-start mt-10 gap-6">
-        <a class="w-full uppercase font-oracle border-2 px-4 py-2" href={getRelativeLocaleUrl(locale, "about")}>
-          {t(locale, "navbar.about")}
-        </a>
-        <a class="w-full uppercase font-oracle border-2 px-4 py-2" href={getRelativeLocaleUrl(locale, "exhibition")}>
-          {t(locale, "navbar.exhibition")}
-        </a>
-        <a class="w-full uppercase font-oracle border-2 px-4 py-2" href={getRelativeLocaleUrl(locale, "guestbook")}>
-          {t(locale, "navbar.guestbook")}
-        </a>
+    <div class="bg-black/40 relative z-10 px-8 py-10 w-full h-[100dvh] flex items-center">
+      <div class="container mx-auto flex flex-col items-start">
+        <h1 class="text-start text-6xl flex flex-col flex-nowrap">
+          <span class="font-balete-black">Kein Anfang.</span>
+          <span class="font-balete-black">Kein Ziel.</span>
+          <span class="font-balete-italic italic">nur dazwischen</span>
+        </h1>
+        <div class="flex flex-col items-start mt-10 gap-6">
+          <a class="w-full uppercase font-oracle border-2 px-4 py-2" href={getRelativeLocaleUrl(locale, "about")}>
+            {t(locale, "navbar.about")}
+          </a>
+          <a class="w-full uppercase font-oracle border-2 px-4 py-2" href={getRelativeLocaleUrl(locale, "exhibition")}>
+            {t(locale, "navbar.exhibition")}
+          </a>
+          <a class="w-full uppercase font-oracle border-2 px-4 py-2" href={getRelativeLocaleUrl(locale, "guestbook")}>
+            {t(locale, "navbar.guestbook")}
+          </a>
+        </div>
       </div>
     </div>
   </div>

@@ -42,46 +42,46 @@ const locale = Astro.props.locale || 'en';
       <span class="w-6 h-0.5 bg-white transition-all duration-300 burger-line-3"></span>
     </button>
   </div>
-
-  <!-- Mobile Menu -->
-  <div 
-    id="mobile-menu" 
-    class="fixed inset-0 bg-black/90 flex flex-col items-center justify-center transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
-  >
-    <nav class="text-center">
-      <ul class="flex flex-col gap-8">
-        {navItems.map(({ path, key }) => (
-          <li>
-            <a href={getRelativeLocaleUrl(locale, path)} class="font-balete-black text-white text-2xl font-medium hover:text-gray-300 transition-colors duration-300">
-              {t(locale, key)}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  </div>
 </header>
+
+<!-- Mobile Menu -->
+<div 
+  id="mobile-menu" 
+  class="fixed inset-0 bg-black/90 flex flex-col items-center justify-center transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-40"
+>
+  <nav class="text-center">
+    <ul class="flex flex-col gap-8">
+      {navItems.map(({ path, key }) => (
+        <li>
+          <a href={getRelativeLocaleUrl(locale, path)} class="font-balete-black text-white text-2xl font-medium hover:text-gray-300 transition-colors duration-300">
+            {t(locale, key)}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</div>
 
 <script>
   const header = document.getElementById("main-header");
-  const links = document.querySelectorAll("header a:not(#mobile-menu a)");
+  const links = document.querySelectorAll("header a");
   const mobileMenuButton = document.getElementById("mobile-menu-button");
   const mobileMenu = document.getElementById("mobile-menu");
   const burgerLines = document.querySelectorAll(".burger-line-1, .burger-line-2, .burger-line-3");
   const mobileMenuLinks = document.querySelectorAll("#mobile-menu a");
-  
+
   let isMenuOpen = false;
-  
+
   function toggleMobileMenu() {
     isMenuOpen = !isMenuOpen;
-    
+
     mobileMenuButton?.setAttribute("aria-expanded", isMenuOpen.toString());
-    
+
     if (isMenuOpen) {
       mobileMenu?.classList.remove("translate-x-full");
       mobileMenu?.classList.add("translate-x-0");
       document.body.style.overflow = "hidden";
-      
+
       burgerLines[0]?.classList.add("rotate-45", "translate-y-2");
       burgerLines[1]?.classList.add("opacity-0");
       burgerLines[2]?.classList.add("-rotate-45", "-translate-y-2");
@@ -89,15 +89,15 @@ const locale = Astro.props.locale || 'en';
       mobileMenu?.classList.remove("translate-x-0");
       mobileMenu?.classList.add("translate-x-full");
       document.body.style.overflow = "";
-      
+
       burgerLines[0]?.classList.remove("rotate-45", "translate-y-2");
       burgerLines[1]?.classList.remove("opacity-0");
       burgerLines[2]?.classList.remove("-rotate-45", "-translate-y-2");
     }
   }
-  
+
   mobileMenuButton?.addEventListener("click", toggleMobileMenu);
-  
+
   mobileMenuLinks.forEach(link => {
     link.addEventListener("click", () => {
       if (isMenuOpen) toggleMobileMenu();
@@ -113,12 +113,12 @@ const locale = Astro.props.locale || 'en';
         link.classList.remove("text-white");
         link.classList.add("text-black");
       });
-      
+
       burgerLines.forEach(line => {
         line.classList.remove("bg-white");
         line.classList.add("bg-black");
       });
-      
+
     } else {
       header?.classList.remove("bg-white/30", "blurry", "shadow-md", "h-[80px]");
       header?.classList.add("bg-transparent");
@@ -127,7 +127,7 @@ const locale = Astro.props.locale || 'en';
         link.classList.remove("text-black");
         link.classList.add("text-white");
       });
-      
+
       burgerLines.forEach(line => {
         line.classList.remove("bg-black");
         line.classList.add("bg-white");

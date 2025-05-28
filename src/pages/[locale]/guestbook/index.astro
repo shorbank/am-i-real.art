@@ -25,9 +25,8 @@ const classCycle = [
 ---
 
 <Layout>
-  <div class="relative h-screen w-screen overflow-hidden bg-white text-black">
-    <h1 class="z-10 top-6 left-6 text-xl font-bold">{t(locale, "guestbook.title")}</h1>
-    <a class="text-blue-500" href={getRelativeLocaleUrl(locale, "guestbook/new")}>
+  <div class="relative h-screen w-screen overflow-hidden bg-neutral-100 text-black">
+    <a class="font-balete-black text-2xl border-2 px-4 py-2 absolute bottom-5 left-5" href={getRelativeLocaleUrl(locale, "guestbook/new")}>
       {t(locale, "guestbook.new_entry")}
     </a>
 

@@ -1,5 +1,10 @@
 ---
 import "../styles/global.css";
+import NavBar from "../components/NavBar.astro";
+
+const locale = Astro.url.pathname.split('/')[1];
+const validLocales = ['en', 'de'];
+const currentLocale = validLocales.includes(locale) ? locale : 'en';
 ---
 
 <!doctype html>
@@ -12,6 +17,7 @@ import "../styles/global.css";
 		<title>am i real</title>
 	</head>
 	<body>
+		<NavBar locale={currentLocale} />
 		<main>
 			<slot />
 		</main>

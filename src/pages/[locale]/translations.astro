@@ -1,0 +1,72 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { t } from "../../i18n";
+import { images } from "../../data/images";
+
+const { locale } = Astro.params;
+---
+
+<Layout>
+  <div class="py-[70px]">
+    <div class="container mx-auto pt-10 px-7">
+      <div id="snap-wrapper" class="flex flex-col">
+        <!-- Text-Abschnitt -->
+        <section class="scroll-section" data-index="0">
+          <h1 class="text-5xl font-balete-black mb-12">
+            {t(locale, "translations.title")}
+          </h1>
+          <p class="mb-6 whitespace-pre-line">
+            {t(locale, "translations.content")}
+          </p>
+        </section>
+
+        <!-- Bilder dynamisch laden -->
+        {images.map((img, index) => (
+          <section
+            class="scroll-section h-[100dvh] flex items-center justify-center"
+            data-index={index + 1}
+          >
+            <img
+              src={img.src}
+              alt={img.alt}
+              class="h-[90dvh] object-contain"
+              loading={index === 0 ? "eager" : "lazy"}
+              decoding="async"
+            />
+          </section>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    let isScrolling = false;
+
+    const sections = Array.from(document.querySelectorAll(".scroll-section"));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (isScrolling) return;
+
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible) {
+          isScrolling = true;
+          visible.target.scrollIntoView({ behavior: "smooth" });
+
+          setTimeout(() => {
+            isScrolling = false;
+          }, 600);
+        }
+      },
+      {
+        root: null,
+        threshold: 0.6,
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  </script>
+</Layout>

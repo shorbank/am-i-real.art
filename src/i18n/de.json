@@ -24,6 +24,10 @@
     "hingabe-title": "Hingabe",
     "hingabe-content": "Die Suche ist nicht zu Ende, aber sie hat ihre Schärfe verloren. Du bist angekommen. Vielleicht nicht dort, wo du dachtest. Aber an einem Ort, der sich ruhig anfühlt. \n\n Hingabe heißt nicht aufgeben, sondern annehmen. Die Dinge sind, wie sie sind. Und hier, in diesem Moment, fühlt sich das genug an. Atme. Tief ein. Tief aus. Schau dich um. Vielleicht ist das hier genug?"
   },
+  "translations": {
+    "title": "Übersetzungen",
+    "content": "Hier findest du die englischen Übersetzungen der Poster, die in der Ausstellung auf Deutsch zu sehen sind."
+  },
   "guestbook": {
     "title": "Gästebuch",
     "new_entry": "Neuer Eintrag"

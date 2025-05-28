@@ -16,9 +16,16 @@ const { locale } = Astro.params;
 <ExhibitionLayout backgroundClass={bgColor}>
   <div class="flex flex-col justify-between min-h-[90dvh]">
     <div class="container mx-auto px-6 pt-10 mb-44">
-      <p class="whitespace-pre-line text-l md:text-xl">
+      <p class="whitespace-pre-line text-l md:text-xl mb-8">
         {t(locale, "exhibition.schwelle-content")}
       </p>
+      <img 
+        src="/images/haus.png" 
+        alt="" 
+        class="h-full object-cover"
+        loading="eager"
+        decoding="async"
+      />
     </div>
     <div>
       <MarqueeText bgColor="bg-[#67A789]" textColor="text-[#1A3F35]" />

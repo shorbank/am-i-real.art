@@ -1,0 +1,57 @@
+---
+import { t } from "../../i18n";
+
+const { locale } = Astro.params;
+const { bgColor = "bg-black", textColor = "text-white" } = Astro.props;
+---
+
+<div class={`font-balete-black overflow-hidden text-[3.4rem] md:text-[3.8rem] relative h-fit ${bgColor} ${textColor}`}>
+  <div class="scroll-track py-5 md:py-6">
+    <div class="item">{t(locale, "exhibition.behind-the-scenes")}</div>
+    <div class="item">{t(locale, "exhibition.behind-the-scenes")}</div>
+    <div class="item">{t(locale, "exhibition.behind-the-scenes")}</div>
+    <div class="item">{t(locale, "exhibition.behind-the-scenes")}</div>
+    <div class="item">{t(locale, "exhibition.behind-the-scenes")}</div>
+    <div class="item">{t(locale, "exhibition.behind-the-scenes")}</div>
+    <div class="item">{t(locale, "exhibition.behind-the-scenes")}</div>
+    <div class="item">{t(locale, "exhibition.behind-the-scenes")}</div>
+    <div class="item">{t(locale, "exhibition.behind-the-scenes")}</div>
+    <div class="item">{t(locale, "exhibition.behind-the-scenes")}</div>
+  </div>
+</div>
+
+<style>
+.scroll-track {
+  display: flex;
+  animation: scrollLoop 100s linear infinite;
+  width: fit-content;
+  --scroll-distance: -2050px;
+}
+
+@media (min-width: 768px) {
+  .scroll-track {
+    --scroll-distance: -2250px;
+  }
+}
+
+@keyframes scrollLoop {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(var(--scroll-distance)); }
+}
+
+.item {
+  width: 410px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .item {
+    width: 450px;
+    height: 50px;
+  }
+}
+</style>

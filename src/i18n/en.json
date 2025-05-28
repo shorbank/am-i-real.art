@@ -16,6 +16,10 @@
     "callout1": "Are you really here?",
     "callout2": "Or already on your way?"
   },
+  "translations": {
+    "title": "Translations",
+    "content": "Here you can find the English translations of the posters that can be seen in the exhibition in German."
+  },
   "guestbook": {
     "title": "Guestbook",
     "new_entry": "New Entry"

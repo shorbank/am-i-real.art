@@ -7,7 +7,6 @@ import AmIRealLogo from "./logo/am-i-real-logo.astro";
 
 const locale = Astro.props.locale || 'en';
 ---
-
 <header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out h-[70px] bg-transparent">
   <div class="px-5 flex justify-between items-center h-full">
     <div class="logo">
@@ -44,10 +43,10 @@ const locale = Astro.props.locale || 'en';
   </div>
 </header>
 
-<!-- Mobile Menu -->
+<!-- Mobile Menu außerhalb vom Header -->
 <div 
   id="mobile-menu" 
-  class="fixed inset-0 bg-black/90 flex flex-col items-center justify-center transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-40"
+  class="fixed inset-0 bg-black/90 flex flex-col items-center justify-center transform translate-x-full opacity-0 pointer-events-none transition-transform duration-300 ease-in-out md:hidden z-40"
 >
   <nav class="text-center">
     <ul class="flex flex-col gap-8">
@@ -71,6 +70,10 @@ const locale = Astro.props.locale || 'en';
   const mobileMenuLinks = document.querySelectorAll("#mobile-menu a");
 
   let isMenuOpen = false;
+
+  requestAnimationFrame(() => {
+    mobileMenu?.classList.remove("opacity-0", "pointer-events-none");
+  });
 
   function toggleMobileMenu() {
     isMenuOpen = !isMenuOpen;

@@ -3,8 +3,8 @@ const qrRedirects: Record<string, string> = {
   '/GSP7WP': '/exhibition/wirrnis',
   '/H7BVJL': '/exhibition/hingabe',
   '/JWGQ9K': '/translations',
-  '/RY1EXM': '/guestbook/new',
-  '/RX8PXF': '/assign-page',
+  '/RY1EXM': '/assign-page',
+  '/RX8PXF': '/guestbook/new',
   '/X2U73Q': '/assign-page',
 };
 

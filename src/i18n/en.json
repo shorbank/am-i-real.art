@@ -16,6 +16,15 @@
     "callout1": "Are you really here?",
     "callout2": "Or already on your way?"
   },
+  "exhibition": {
+    "schwelle-title": "Threshold",
+    "schwelle-content": "You have taken the first step. You are standing at the station and yet you have not yet arrived. \n\n The threshold is a moment of pause. The last look back, the weight of a decision, the tingling of the unknown. \n\n Are you getting on? Where will the train take you? \n\n This is where the change begins. The familiar world is behind you. Nostalgia, fear and hope mingle between farewell and departure.\n\n Would it be a mistake to simply turn back and pretend you never left? What do you leave behind? And what do you take with you?",
+    "wirrnis-title": "Chaos",
+    "wirrnis-content": "Welcome to chaos, you've set off. \n\n The train rattles along the tracks. Thoughts, feelings, identity fly past you. \n\n Nothing is clear. Nothing stays as it was. Everything is in motion here. You can lose your way, get lost, get lost or find something you were never looking for. \n\n It is loud. It is quiet. It contradicts itself. \n A place of doubt and possibility. \n\n You don't need to know who you are here. \n Only that you are becoming.",
+    "hingabe-title": "Becoming",
+    "hingabe-content": "The search is not over but it has lost its edge. You have arrived. Maybe not where you thought. But in a place that feels calm. \n\n Surrender does not mean giving up, but accepting. Things are as they are. And here, in this moment, that feels enough. Breathe. Deep in. Exhale deeply. Look around you. Maybe this is enough?",
+    "behind-the-scenes": "behind the scenes"
+  },
   "translations": {
     "title": "Translations",
     "content": "Here you can find the English translations of the posters that can be seen in the exhibition in German."

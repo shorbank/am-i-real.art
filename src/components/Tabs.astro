@@ -1,14 +1,17 @@
 ---
+import { t } from "../i18n";
+
 const rawPath = Astro.url.pathname;
 const currentPath = rawPath.replace(/\/$/, '');
 
 const langMatch = currentPath.match(/^\/(de|en)(\/|$)/);
-const langPrefix = langMatch ? `/${langMatch[1]}` : '';
+const locale = langMatch?.[1] ?? 'en';
+const langPrefix = `/${locale}`;
 
 const tabs = [
-  { title: "Schwelle", path: `${langPrefix}/exhibition/schwelle` },
-  { title: "Wirrnis", path: `${langPrefix}/exhibition/wirrnis` },
-  { title: "Hingabe", path: `${langPrefix}/exhibition/hingabe` },
+  { key: "exhibition.schwelle-title", path: `${langPrefix}/exhibition/schwelle` },
+  { key: "exhibition.wirrnis-title", path: `${langPrefix}/exhibition/wirrnis` },
+  { key: "exhibition.hingabe-title", path: `${langPrefix}/exhibition/hingabe` },
 ];
 ---
 
@@ -25,7 +28,7 @@ const tabs = [
               href={tab.path}
               class="font-balete-black text-xl md:text-4xl block transition-transform duration-150 active:scale-95"
             >
-              {tab.title}
+              {t(locale, tab.key)}
             </a>
           </li>
         );

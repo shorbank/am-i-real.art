@@ -16,6 +16,15 @@
     "callout1": "Are you really here?",
     "callout2": "Or already on your way?"
   },
+  "exhibition": {
+    "schwelle-title": "Threshold",
+    "schwelle-content": "Du hast den ersten Schritt gemacht. Du stehst am Bahnhof und doch bist du noch nicht angekommen.\n\n Die Schwelle ist ein Moment des Innehaltens. Der letzte Blick zurück, das Gewicht einer Entscheidung, das Kribbeln des Unbekannten.\n\n Steigst du ein? Wohin wird dich der Zug bringen? \n\n Hier beginnt der Wandel. Die vertraute Welt liegt hinter dir. Zwischen Abschied und Aufbruch mischen sich Nostalgie, Angst, Hoffnung. \n\n Einfach umkehren, so tun, als wärst du nie gegangen, wäre das ein Fehler? Was lässt du zurück? Und was nimmst du mit?",
+    "wirrnis-title": "Chaos",
+    "wirrnis-content": "Willkommen im Chaos, du bist losgefahren. \n\n Der Zug rattert über die Gleise. Gedanken, Gefühle, Identität fliegen an dir vorbei. \n\n Nichts ist klar. Nichts bleibt, wie es war. Hier ist alles in Bewegung. Du kannst dich verirren, verlaufen, verlieren oder etwas finden, das du nie gesucht hast. \n\n Es ist laut. Es ist still. Es widerspricht sich selbst. \n Ein Ort des Zweifelns und der Möglichkeit. \n\n Du musst hier nicht wissen, wer du bist. \n Nur, dass du wirst.",
+    "hingabe-title": "Becoming",
+    "hingabe-content": "The search is not over but it has lost its edge. You have arrived. Maybe not where you thought. But in a place that feels calm. \n\n Surrender does not mean giving up, but accepting. Things are as they are. And here, in this moment, that feels enough. Breathe. Deep in. Exhale deeply. Look around you. Maybe this is enough?",
+    "behind-the-scenes": "behind the scenes"
+  },
   "translations": {
     "title": "Translations",
     "content": "Here you can find the English translations of the posters that can be seen in the exhibition in German."

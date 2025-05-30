@@ -4,7 +4,7 @@ import { t } from "../../i18n";
 
 import LinkBox from "../../components/about/LinkBox.astro";
 import MarqueeText from "../../components/about/MarqueeText.astro";
-import PhysicsPile from "../../components/about/PhysicsPile.astro";
+import PhysicsPileIsland from "../../components/about/PhysicsPileIsland";
 
 const { locale } = Astro.params;
 ---
@@ -35,6 +35,6 @@ const { locale } = Astro.params;
       </p>
     </div>
     <MarqueeText />
-    <PhysicsPile />
+    <PhysicsPileIsland client:load />
   </div>
 </Layout>

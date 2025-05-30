@@ -25,7 +25,19 @@ const classCycle = [
 ---
 
 <Layout>
-  <div class="relative h-screen w-screen overflow-hidden bg-neutral-100 text-black">
+  <div class="relative h-[100dvh] w-screen overflow-hidden text-black">
+
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      poster="/TV-static0.jpg"
+      class="absolute top-0 left-0 w-full h-full object-cover z-[-1] opacity-50">
+      <source src="/TV-static.mp4" type="video/mp4" />
+      <img src="/TV-static0.jpg" alt="Fallback background" class="w-full h-full object-cover" />
+    </video>
+
     <a class="font-balete-black text-2xl bg-white/70 border-2 px-4 py-2 absolute bottom-5 left-5" href={getRelativeLocaleUrl(locale, "guestbook/new")}>
       {t(locale, "guestbook.new_entry")}
     </a>

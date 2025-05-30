@@ -15,7 +15,7 @@ const tabs = [
 ];
 ---
 
-<div class="px-2">
+<div class="px-5">
   <ul class="flex justify-between mb-4" style="list-style: none;">
     {
       tabs.map((tab) => {
@@ -23,7 +23,7 @@ const tabs = [
         const isActive = currentPath === tabPath;
 
         return (
-          <li class={`px-5 py-1 mix-blend-multiply transition-colors duration-200 ${isActive ? 'bg-black text-white' : 'bg-neutral-300/50'}`}>
+          <li class={`px-4 py-1 mix-blend-multiply transition-colors duration-200 ${isActive ? 'bg-black text-white' : 'bg-neutral-300/50'}`}>
             <a
               href={tab.path}
               class="font-balete-black text-xl md:text-4xl block transition-transform duration-150 active:scale-95"

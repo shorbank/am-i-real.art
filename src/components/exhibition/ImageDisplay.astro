@@ -1,0 +1,77 @@
+---
+export interface Props {
+  images: string[]
+}
+const { images } = Astro.props
+---
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 8vh;
+    column-gap: 8vw;
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+
+  .image-wrapper {
+    position: relative;
+    overflow: hidden;
+    animation: float 6s ease-in-out infinite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .image-wrapper:nth-child(2n) {
+    animation-duration: 7s;
+  }
+
+  .image-wrapper:nth-child(3n) {
+    animation-duration: 5.5s;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  @keyframes float {
+    0% { transform: translate(0px, 0px) rotate(0deg); }
+    25% { transform: translate(2px, -2px) rotate(0.2deg); }
+    50% { transform: translate(-2px, 2px) rotate(-0.2deg); }
+    75% { transform: translate(1px, -1px) rotate(0.1deg); }
+    100% { transform: translate(0px, 0px) rotate(0deg); }
+  }
+
+  @media (max-width: 600px) {
+    .grid {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .image-wrapper {
+      max-width: 80%;
+    }
+
+    .image-wrapper:nth-child(odd) {
+      align-self: flex-start;
+    }
+
+    .image-wrapper:nth-child(even) {
+      align-self: flex-end;
+    }
+  }
+</style>
+
+<div class="grid px-6 py-10 md:pt-16 md:pb-22">
+  {images.map((src) => (
+    <div class="image-wrapper">
+      <img src={src} alt="Bild" loading="lazy" />
+    </div>
+  ))}
+</div>

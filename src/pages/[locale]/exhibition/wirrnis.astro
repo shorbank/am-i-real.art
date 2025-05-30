@@ -1,6 +1,9 @@
 ---
 import ExhibitionLayout from "../../../layouts/ExhibitionLayout.astro";
 import MarqueeText from "../../../components/exhibition/MarqueeText.astro";
+import ImageDisplay from "../../../components/exhibition/ImageDisplay.astro";
+
+import { room2 } from '../../../data/room2'
 
 const bgColor = "bg-[#A8BDBA]";
 
@@ -14,13 +17,14 @@ const { locale } = Astro.params;
 ---
 
 <ExhibitionLayout backgroundClass={bgColor}>
-  <div class="flex flex-col justify-between min-h-[90dvh]">
-    <div class="container mx-auto px-6 pt-10 mb-44">
+  <div class="flex flex-col justify-between">
+    <div class="container mx-auto px-6 pt-10">
       <p class="whitespace-pre-line text-l md:text-xl">
         {t(locale, "exhibition.wirrnis-content")}
       </p>
     </div>
     <div>
+      <ImageDisplay images={room2} />
       <MarqueeText bgColor="bg-[#628C8C]" textColor="text-[#1B282A]" />
       <div class="bg-neutral-900 text-white">
         <div class="container mx-auto px-6 min-h-[500px] flex flex-col justify-center items-center">

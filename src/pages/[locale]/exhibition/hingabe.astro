@@ -1,6 +1,9 @@
 ---
 import ExhibitionLayout from "../../../layouts/ExhibitionLayout.astro";
 import MarqueeText from "../../../components/exhibition/MarqueeText.astro";
+import ImageDisplay from "../../../components/exhibition/ImageDisplay.astro";
+
+import { room3 } from '../../../data/room3'
 
 const bgColor = "bg-[#EFC0BD]";
 
@@ -14,10 +17,19 @@ const { locale } = Astro.params;
 ---
 
 <ExhibitionLayout backgroundClass={bgColor}>
-  <div class="flex flex-col justify-between min-h-[90dvh]">
-    <div class="container mx-auto px-6 pt-10 mb-44">
+  <div class="flex flex-col justify-between">
+    <div class="container mx-auto px-6 pt-10">
       <p class="whitespace-pre-line text-l md:text-xl">
         {t(locale, "exhibition.hingabe-content")}
+        <div class="pt-10 pb-15">
+          <img 
+            src="/images/raum3/Raum3_ZELT_VISUALS.webp" 
+            alt="" 
+            class="h-full object-cover"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
       </p>
     </div>
     <div>

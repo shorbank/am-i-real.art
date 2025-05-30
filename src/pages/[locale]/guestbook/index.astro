@@ -26,7 +26,16 @@ const classCycle = [
 
 <Layout>
   <div class="relative h-screen w-screen overflow-hidden bg-neutral-100 text-black">
-    <a class="font-balete-black text-2xl border-2 px-4 py-2 absolute bottom-5 left-5" href={getRelativeLocaleUrl(locale, "guestbook/new")}>
+    <div class="absolute line-box"></div>
+    <svg>
+      <filter id="noise">
+        <feTurbulence id="turbulence">
+          <animate attributeName="baseFrequency" dur="100s" values="0.9 0.9; 0.8 0.8; 0.9 0.9" repeatCount="indefinite"></animate>
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" scale="60"></feDisplacementMap>
+      </filter>
+    </svg>
+    <a class="font-balete-black text-2xl bg-white/70 border-2 px-4 py-2 absolute bottom-5 left-5" href={getRelativeLocaleUrl(locale, "guestbook/new")}>
       {t(locale, "guestbook.new_entry")}
     </a>
 
@@ -111,3 +120,21 @@ const classCycle = [
     </script>
   </div>
 </Layout>
+
+<style>
+  .line-box {
+    top: -50px;
+    left: -50px;
+    width: calc(100% + 50px);
+    height: calc(100% + 50px);
+    background: repeating-linear-gradient(#111111cc, #111111cc 50%, #757575cc 50%, #757575cc);
+    background-size: 15px 15px;
+    filter: url(#noise);
+  }
+
+  .line-box svg {
+    width: 0;
+    height: 0;
+  }
+
+</style>

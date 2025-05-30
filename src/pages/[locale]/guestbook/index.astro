@@ -86,8 +86,16 @@ const classCycle = [
         requestAnimationFrame(animate);
       }
 
+      function decaySpeed() {
+        if (Math.abs(speed) > 5) {
+          speed += speed > 0 ? -1 : 1;
+          scrollTimeout = setTimeout(decaySpeed, 50);
+        }
+      }
+
       animate();
 
+      // Desktop scroll
       window.addEventListener("wheel", (event) => {
         const scrollDelta = event.deltaY;
 
@@ -98,15 +106,34 @@ const classCycle = [
         }
 
         clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(decaySpeed, 100);
+      });
 
-        function decaySpeed() {
-          if (Math.abs(speed) > 5) {
-            speed += speed > 0 ? -1 : 1;
-            scrollTimeout = setTimeout(decaySpeed, 50);
+      // Mobile touch scroll
+      let touchStartY = null;
+
+      window.addEventListener("touchstart", (e) => {
+        touchStartY = e.touches[0].clientY;
+      });
+
+      window.addEventListener("touchmove", (e) => {
+        if (touchStartY === null) return;
+
+        const touchEndY = e.touches[0].clientY;
+        const deltaY = touchStartY - touchEndY;
+
+        if (Math.abs(deltaY) > 10) {
+          if (deltaY > 0) {
+            speed = Math.min(speed + 2, 30);
+          } else {
+            speed = Math.max(speed - 2, -30);
           }
+
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(decaySpeed, 100);
         }
 
-        scrollTimeout = setTimeout(decaySpeed, 100);
+        touchStartY = touchEndY;
       });
     </script>
   </div>

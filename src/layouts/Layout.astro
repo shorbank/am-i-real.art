@@ -11,34 +11,66 @@ const currentLocale = validLocales.includes(locale) ? locale : 'en';
 
 <!doctype html>
 <html lang={currentLocale}>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" href="/favicon.webp" />
-		<meta name="generator" content={Astro.generator} />
-		<title>am i real</title>
-	</head>
-	<body>
-		<NavBar locale={currentLocale} />
-		<main>
-			<LanguageSwitcher class="fixed min-w-[2rem] right-0 top-[65dvh] z-50" />
-			<slot />
-		</main>
-		<footer class="bg-black">
-			<Footer locale={currentLocale}  />
-		</footer>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.webp" />
+    <meta name="generator" content={Astro.generator} />
+    <title>am i real</title>
+  </head>
+  <body class="relative">
+
+    <div
+      id="preloader"
+      class="fixed inset-0 z-50 bg-white flex items-center justify-center opacity-100 transition-opacity duration-500"
+    >
+      <img src="/favicon.webp" alt="Loading..." class="w-32 h-32 animate-pulse" />
+    </div>
+
+    <div id="page-content" class="invisible">
+      <NavBar locale={currentLocale} />
+      <main>
+        <LanguageSwitcher class="fixed min-w-[2rem] right-0 top-[65dvh] z-50" />
+        <slot />
+      </main>
+      <footer class="bg-black">
+        <Footer locale={currentLocale} />
+      </footer>
+    </div>
+
+    <script>
+      const MIN_TIME = 1500;
+      const startTime = Date.now();
+
+      window.addEventListener('load', () => {
+        const elapsed = Date.now() - startTime;
+        const remaining = MIN_TIME - elapsed;
+
+        setTimeout(() => {
+          const preloader = document.getElementById('preloader');
+          const content = document.getElementById('page-content');
+
+          if (preloader) {
+            preloader.style.opacity = '0';
+            setTimeout(() => preloader.remove(), 500);
+          }
+
+          content?.classList.remove('invisible');
+        }, remaining > 0 ? remaining : 0);
+      });
+    </script>
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		background-color: #f1f1f1;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f1f1f1;
+  }
 </style>

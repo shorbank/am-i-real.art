@@ -3,10 +3,17 @@
 import type React from "react"
 import { useEffect, useRef, useState } from "react"
 import Matter from "matter-js"
-import type { PhysicsElement } from "../types"
 
 interface PhysicsPileProps {
-  elements?: PhysicsElement[]
+  elements?: {
+    shape: "circle" | "rectangle" | "polygon"
+    width?: number
+    height?: number
+    radius?: number
+    vertices?: { x: number; y: number }[]
+    color: string
+    texture?: string
+  }[]
   containerWidth?: number
   containerHeight?: number
   gravity?: { x: number; y: number }
@@ -25,7 +32,7 @@ const PhysicsPile: React.FC<PhysicsPileProps> = ({
   gravity = { x: 0, y: 1 },
   enableDebug = false,
   wallThickness = 20,
-  elementCount = 20,
+  elementCount = 5,
   friction = 0.3,
   restitution = 0.6,
   backgroundColor = "#f0f0f0",
@@ -50,7 +57,6 @@ const PhysicsPile: React.FC<PhysicsPileProps> = ({
     const Composite = Matter.Composite
     const MouseConstraint = Matter.MouseConstraint
     const Mouse = Matter.Mouse
-    const Body = Matter.Body
 
     const engine = Engine.create({ gravity })
     engineRef.current = engine
@@ -83,21 +89,21 @@ const PhysicsPile: React.FC<PhysicsPileProps> = ({
       containerHeight + wallThickness / 2,
       containerWidth + wallThickness * 2,
       wallThickness,
-      wallOptions
+      wallOptions,
     )
     const leftWall = Bodies.rectangle(
       -wallThickness / 2,
       containerHeight / 2,
       wallThickness,
       containerHeight * 2,
-      wallOptions
+      wallOptions,
     )
     const rightWall = Bodies.rectangle(
       containerWidth + wallThickness / 2,
       containerHeight / 2,
       wallThickness,
       containerHeight * 2,
-      wallOptions
+      wallOptions,
     )
 
     Composite.add(engine.world, [ground, leftWall, rightWall])
@@ -128,20 +134,18 @@ const PhysicsPile: React.FC<PhysicsPileProps> = ({
 
         switch (element.shape) {
           case "circle":
-            body = Bodies.circle(x, y, element.radius || 20, commonOptions)
+            body = Bodies.circle(x, y, element.radius || 40, commonOptions)
             break
           case "rectangle":
-            body = Bodies.rectangle(x, y, element.width || 40, element.height || 40, commonOptions)
+            body = Bodies.rectangle(x, y, element.width || 80, element.height || 80, commonOptions)
             break
           case "polygon":
-            if (element.vertices) {
-              body = Bodies.fromVertices(x, y, [element.vertices], commonOptions) as Matter.Body
-            } else {
-              body = Bodies.polygon(x, y, 3, 30, commonOptions)
-            }
+            body = element.vertices
+              ? Bodies.fromVertices(x, y, [element.vertices], commonOptions)
+              : Bodies.polygon(x, y, 3, 50, commonOptions)
             break
           default:
-            body = Bodies.rectangle(x, y, 40, 40, commonOptions)
+            body = Bodies.rectangle(x, y, 80, 80, commonOptions)
         }
 
         physicsElements.push(body)
@@ -164,16 +168,16 @@ const PhysicsPile: React.FC<PhysicsPileProps> = ({
 
         switch (shapeType) {
           case 0:
-            body = Bodies.circle(x, y, 15 + Math.random() * 15, commonOptions)
+            body = Bodies.circle(x, y, 40 + Math.random() * 20, commonOptions)
             break
           case 1:
-            body = Bodies.rectangle(x, y, 30 + Math.random() * 30, 30 + Math.random() * 30, commonOptions)
+            body = Bodies.rectangle(x, y, 60 + Math.random() * 30, 60 + Math.random() * 30, commonOptions)
             break
           case 2:
-            body = Bodies.polygon(x, y, 3 + Math.floor(Math.random() * 5), 15 + Math.random() * 15, commonOptions)
+            body = Bodies.polygon(x, y, 3 + Math.floor(Math.random() * 5), 35 + Math.random() * 15, commonOptions)
             break
           default:
-            body = Bodies.rectangle(x, y, 40, 40, commonOptions)
+            body = Bodies.rectangle(x, y, 80, 80, commonOptions)
         }
 
         physicsElements.push(body)
@@ -191,9 +195,9 @@ const PhysicsPile: React.FC<PhysicsPileProps> = ({
         render: { visible: enableDebug },
       },
     })
-
     mouseConstraintRef.current = mouseConstraint
     Composite.add(engine.world, mouseConstraint)
+
     render.mouse = mouse
 
     const runner = Runner.create()
@@ -239,9 +243,7 @@ const PhysicsPile: React.FC<PhysicsPileProps> = ({
 
     const x = Math.random() * (containerWidth - 100) + 50
     const y = 50
-
     const shapeType = Math.floor(Math.random() * 3)
-    let body: Matter.Body
 
     const commonOptions = {
       friction,
@@ -251,18 +253,19 @@ const PhysicsPile: React.FC<PhysicsPileProps> = ({
       },
     }
 
+    let body: Matter.Body
     switch (shapeType) {
       case 0:
-        body = Bodies.circle(x, y, 15 + Math.random() * 15, commonOptions)
+        body = Bodies.circle(x, y, 40 + Math.random() * 20, commonOptions)
         break
       case 1:
-        body = Bodies.rectangle(x, y, 30 + Math.random() * 30, 30 + Math.random() * 30, commonOptions)
+        body = Bodies.rectangle(x, y, 60 + Math.random() * 30, 60 + Math.random() * 30, commonOptions)
         break
       case 2:
-        body = Bodies.polygon(x, y, 3 + Math.floor(Math.random() * 5), 15 + Math.random() * 15, commonOptions)
+        body = Bodies.polygon(x, y, 3 + Math.floor(Math.random() * 5), 35 + Math.random() * 15, commonOptions)
         break
       default:
-        body = Bodies.rectangle(x, y, 40, 40, commonOptions)
+        body = Bodies.rectangle(x, y, 80, 80, commonOptions)
     }
 
     Composite.add(engineRef.current.world, body)
@@ -271,6 +274,7 @@ const PhysicsPile: React.FC<PhysicsPileProps> = ({
 
   const clearElements = () => {
     if (!engineRef.current) return
+
     const Composite = Matter.Composite
 
     bodiesRef.current.forEach((body) => {

@@ -25,13 +25,20 @@ const classCycle = [
 ---
 
 <Layout>
+  <style>
+    video::-webkit-media-controls {
+      display: none !important;
+    }
+  </style>
+
   <div class="relative h-[100dvh] w-screen overflow-hidden text-black">
 
     <video
-      autoplay
       muted
-      loop
+      autoplay
       playsinline
+      loop
+      preload="auto"
       poster="/TV-static0.jpg"
       class="absolute top-0 left-0 w-full h-full object-cover z-[-1] opacity-50">
       <source src="/TV-static.mp4" type="video/mp4" />

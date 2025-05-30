@@ -5,6 +5,8 @@ import vercel from '@astrojs/vercel';
 
 import db from '@astrojs/db';
 
+import react from '@astrojs/react';
+
 export default defineConfig({
   output: 'server',
   adapter: vercel(),
@@ -22,5 +24,5 @@ export default defineConfig({
     }
   },
 
-  integrations: [db()]
+  integrations: [db(), react()]
 });

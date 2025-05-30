@@ -3,18 +3,10 @@
 import type React from "react"
 import { useEffect, useRef, useState } from "react"
 import Matter from "matter-js"
+import type { PhysicsElement } from "../types"
 
-// Define the props interface for our component
 interface PhysicsPileProps {
-  elements?: {
-    shape: "circle" | "rectangle" | "polygon"
-    width?: number
-    height?: number
-    radius?: number
-    vertices?: { x: number; y: number }[]
-    color: string
-    texture?: string
-  }[]
+  elements?: PhysicsElement[]
   containerWidth?: number
   containerHeight?: number
   gravity?: { x: number; y: number }
@@ -45,16 +37,12 @@ const PhysicsPile: React.FC<PhysicsPileProps> = ({
   const mouseConstraintRef = useRef<Matter.MouseConstraint>()
   const bodiesRef = useRef<Matter.Body[]>([])
 
-  // State to track if the component is mounted (for Astro client:load directive)
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
-
-    // Only run the physics engine if the component is mounted
     if (!mounted) return
 
-    // Initialize Matter.js modules
     const Engine = Matter.Engine
     const Render = Matter.Render
     const Runner = Matter.Runner
@@ -64,16 +52,12 @@ const PhysicsPile: React.FC<PhysicsPileProps> = ({
     const Mouse = Matter.Mouse
     const Body = Matter.Body
 
-    // Create engine
-    const engine = Engine.create({
-      gravity: gravity,
-    })
+    const engine = Engine.create({ gravity })
     engineRef.current = engine
 
-    // Create renderer
     const render = Render.create({
       canvas: canvasRef.current!,
-      engine: engine,
+      engine,
       options: {
         width: containerWidth,
         height: containerHeight,
@@ -86,7 +70,6 @@ const PhysicsPile: React.FC<PhysicsPileProps> = ({
     })
     renderRef.current = render
 
-    // Create walls (boundaries)
     const wallOptions = {
       isStatic: true,
       render: {
@@ -100,39 +83,34 @@ const PhysicsPile: React.FC<PhysicsPileProps> = ({
       containerHeight + wallThickness / 2,
       containerWidth + wallThickness * 2,
       wallThickness,
-      wallOptions,
+      wallOptions
     )
-
     const leftWall = Bodies.rectangle(
       -wallThickness / 2,
       containerHeight / 2,
       wallThickness,
       containerHeight * 2,
-      wallOptions,
+      wallOptions
     )
-
     const rightWall = Bodies.rectangle(
       containerWidth + wallThickness / 2,
       containerHeight / 2,
       wallThickness,
       containerHeight * 2,
-      wallOptions,
+      wallOptions
     )
 
-    // Add walls to the world
     Composite.add(engine.world, [ground, leftWall, rightWall])
 
-    // Create physics elements
     const physicsElements: Matter.Body[] = []
 
-    // If custom elements are provided, use them
     if (elements.length > 0) {
-      elements.forEach((element, index) => {
+      elements.forEach((element) => {
         let body: Matter.Body
 
         const commonOptions = {
-          friction: friction,
-          restitution: restitution,
+          friction,
+          restitution,
           render: {
             fillStyle: element.color,
             sprite: element.texture
@@ -145,7 +123,6 @@ const PhysicsPile: React.FC<PhysicsPileProps> = ({
           },
         }
 
-        // Random position within the container
         const x = Math.random() * (containerWidth - 100) + 50
         const y = Math.random() * (containerHeight / 3) + 20
 
@@ -158,9 +135,8 @@ const PhysicsPile: React.FC<PhysicsPileProps> = ({
             break
           case "polygon":
             if (element.vertices) {
-              body = Bodies.fromVertices(x, y, [element.vertices], commonOptions)
+              body = Bodies.fromVertices(x, y, [element.vertices], commonOptions) as Matter.Body
             } else {
-              // Default to a triangle if no vertices provided
               body = Bodies.polygon(x, y, 3, 30, commonOptions)
             }
             break
@@ -171,31 +147,29 @@ const PhysicsPile: React.FC<PhysicsPileProps> = ({
         physicsElements.push(body)
       })
     } else {
-      // Generate default elements if none provided
       for (let i = 0; i < elementCount; i++) {
         const x = Math.random() * (containerWidth - 100) + 50
         const y = Math.random() * (containerHeight / 3) + 20
 
-        // Randomly choose shape
         const shapeType = Math.floor(Math.random() * 3)
         let body: Matter.Body
 
         const commonOptions = {
-          friction: friction,
-          restitution: restitution,
+          friction,
+          restitution,
           render: {
             fillStyle: `hsl(${Math.random() * 360}, 70%, 60%)`,
           },
         }
 
         switch (shapeType) {
-          case 0: // Circle
+          case 0:
             body = Bodies.circle(x, y, 15 + Math.random() * 15, commonOptions)
             break
-          case 1: // Rectangle
+          case 1:
             body = Bodies.rectangle(x, y, 30 + Math.random() * 30, 30 + Math.random() * 30, commonOptions)
             break
-          case 2: // Polygon
+          case 2:
             body = Bodies.polygon(x, y, 3 + Math.floor(Math.random() * 5), 15 + Math.random() * 15, commonOptions)
             break
           default:
@@ -206,36 +180,27 @@ const PhysicsPile: React.FC<PhysicsPileProps> = ({
       }
     }
 
-    // Add all elements to the world
     Composite.add(engine.world, physicsElements)
     bodiesRef.current = physicsElements
 
-    // Add mouse control
     const mouse = Mouse.create(render.canvas)
     const mouseConstraint = MouseConstraint.create(engine, {
-      mouse: mouse,
+      mouse,
       constraint: {
         stiffness: 0.2,
-        render: {
-          visible: enableDebug,
-        },
+        render: { visible: enableDebug },
       },
     })
 
     mouseConstraintRef.current = mouseConstraint
     Composite.add(engine.world, mouseConstraint)
-
-    // Keep the mouse in sync with rendering
     render.mouse = mouse
 
-    // Run the engine
     const runner = Runner.create()
     Runner.run(runner, engine)
     Render.run(render)
 
-    // Cleanup function
     return () => {
-      // Stop the engine and renderer
       Render.stop(render)
       Runner.stop(runner)
       Engine.clear(engine)
@@ -248,7 +213,6 @@ const PhysicsPile: React.FC<PhysicsPileProps> = ({
         Composite.remove(engine.world, mouseConstraintRef.current)
       }
 
-      // Remove all bodies
       bodiesRef.current.forEach((body) => {
         Composite.remove(engine.world, body)
       })
@@ -267,37 +231,34 @@ const PhysicsPile: React.FC<PhysicsPileProps> = ({
     elements,
   ])
 
-  // Add a new element at a random position
   const addElement = () => {
     if (!engineRef.current) return
 
-    const Engine = Matter.Engine
     const Bodies = Matter.Bodies
     const Composite = Matter.Composite
 
     const x = Math.random() * (containerWidth - 100) + 50
     const y = 50
 
-    // Randomly choose shape
     const shapeType = Math.floor(Math.random() * 3)
     let body: Matter.Body
 
     const commonOptions = {
-      friction: friction,
-      restitution: restitution,
+      friction,
+      restitution,
       render: {
         fillStyle: `hsl(${Math.random() * 360}, 70%, 60%)`,
       },
     }
 
     switch (shapeType) {
-      case 0: // Circle
+      case 0:
         body = Bodies.circle(x, y, 15 + Math.random() * 15, commonOptions)
         break
-      case 1: // Rectangle
+      case 1:
         body = Bodies.rectangle(x, y, 30 + Math.random() * 30, 30 + Math.random() * 30, commonOptions)
         break
-      case 2: // Polygon
+      case 2:
         body = Bodies.polygon(x, y, 3 + Math.floor(Math.random() * 5), 15 + Math.random() * 15, commonOptions)
         break
       default:
@@ -308,13 +269,10 @@ const PhysicsPile: React.FC<PhysicsPileProps> = ({
     bodiesRef.current = [...bodiesRef.current, body]
   }
 
-  // Clear all elements
   const clearElements = () => {
     if (!engineRef.current) return
-
     const Composite = Matter.Composite
 
-    // Remove all bodies except walls and constraints
     bodiesRef.current.forEach((body) => {
       Composite.remove(engineRef.current!.world, body)
     })

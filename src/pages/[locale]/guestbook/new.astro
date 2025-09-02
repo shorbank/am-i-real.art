@@ -10,19 +10,24 @@ const { locale } = Astro.params;
   <div class="pt-[70px]">
     <div class="container mx-auto pt-10 px-7 pr-12">
       <h1 class="mb-8 flex flex-col">
-        <span class="font-balete-italic italic text-4xl"
+        <span class="font-balete-italic italic text-4xl md:text-6xl"
           >{t(locale, "guestbook-new.title1")}</span
         >
-        <span class="font-balete-black text-4xl"
+        <span class="font-balete-black text-4xl md:text-6xl"
           >{t(locale, "guestbook-new.title2")}</span
         >
-        <span class="font-balete-italic italic text-4xl"
+        <span class="font-balete-italic italic text-4xl md:text-6xl"
           >{t(locale, "guestbook-new.title3")}</span
         >
       </h1>
-      <p>{t(locale, "guestbook-new.intro-text")}</p>
+      <p class="mb-6">{t(locale, "guestbook-new.intro-text")}</p>
 
+      <p class="italic mb-8">Dieses Formular ist zur Zeit nicht verfügbar</p>
+
+      <!-- 
       <GuestbookForm />
+
+      -->
     </div>
   </div>
 </Layout>

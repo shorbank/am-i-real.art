@@ -12,26 +12,41 @@ const { locale } = Astro.params;
 <Layout>
   <div class="pt-[70px]">
     <div class="container mx-auto px-8">
-      <h1 class="flex flex-col text-4xl mb-12 max-w-[250px] w-full">
-        <span class="font-balete-black self-start">{t(locale, "about.title1")}</span>
-        <span class="font-balete-black self-end">{t(locale, "about.title2")}</span>
-        <span class="font-balete-italic italic self-center">{t(locale, "about.title3")}</span>
-        <span class="font-balete-italic italic self-start">{t(locale, "about.title4")}</span>
+      <h1
+        class="flex flex-col text-4xl md:text-6xl mb-12 max-w-[250px] md:max-w-[500px] w-full"
+      >
+        <span class="font-balete-black self-start"
+          >{t(locale, "about.title1")}</span
+        >
+        <span class="font-balete-black self-end"
+          >{t(locale, "about.title2")}</span
+        >
+        <span class="font-balete-italic italic self-center"
+          >{t(locale, "about.title3")}</span
+        >
+        <span class="font-balete-italic italic self-start"
+          >{t(locale, "about.title4")}</span
+        >
       </h1>
       <p class="mb-4">
-        Es gibt Orte, die nicht dafür gedacht sind, dass man bleibt. Orte ohne Ankunft, ohne Ziel, Schwellenräume, sogenannte liminal spaces.
+        Es gibt Orte, die nicht dafür gedacht sind, dass man bleibt. Orte ohne
+        Ankunft, ohne Ziel, Schwellenräume, sogenannte liminal spaces.
       </p>
       <p class="mb-4">
-        Liminalität beschreibt den Zustand zwischen zwei Zuständen, Orten oder Lebensphasen, wie ein Korridor zwischen zwei Räumen, ein Bahnhof um Mitternacht, oder der flüchtige Moment zwischen Kindheit und Erwachsensein.
+        Liminalität beschreibt den Zustand zwischen zwei Zuständen, Orten oder
+        Lebensphasen, wie ein Korridor zwischen zwei Räumen, ein Bahnhof um
+        Mitternacht, oder der flüchtige Moment zwischen Kindheit und
+        Erwachsensein.
       </p>
     </div>
     <LinkBox />
     <div class="container mx-auto px-6">
       <p class="mb-4">
-        Diese Ausstellung ist kein Ziel. Sie ist ein Moment. Ein Innehalten. Ein Übergang, der - vielleicht - in Hingabe endet.
+        Diese Ausstellung ist kein Ziel. Sie ist ein Moment. Ein Innehalten. Ein
+        Übergang, der - vielleicht - in Hingabe endet.
       </p>
       <p class="mb-4">
-        AM I REAL? fragt nicht: Wer bist du? <br> Sondern:
+        AM I REAL? fragt nicht: Wer bist du? <br /> Sondern:
       </p>
     </div>
     <MarqueeText />

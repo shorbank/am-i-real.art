@@ -38,7 +38,8 @@
     "title2": "Was bleibt zurück?",
     "title3": "Woran wirst du dich erinnern?",
     "intro-text": "Bevor du weiterfährst, lass uns wissen, dass du hier warst. Schreib uns ein paar Worte, ein Gefühl, eine Frage. Was bedeutet es für dich, in einem Zwischenraum zu sein? Dieser Eintrag ist Teil der Ausstellung. Auch deine Spuren machen sie real.",
-    "consent": "Mein Eintrag darf veröffentlicht werden.", 
+    "consent": "Mein Eintrag darf veröffentlicht werden.",
+    "comment": "Dein Kommentar",
     "submit": "Einreichen"
   },
   "imprint": {
@@ -90,7 +91,6 @@
     "your-rights6": "Widerspruch gegen die Verarbeitung (Art. 21 DSGVO).",
     "supervisoriy-authority": "7. Aufsichtsbehörde",
     "supervisoriy-authority-content": "Sie haben gemäß Art. 77 DSGVO das Recht, Beschwerde bei einer Datenschutzaufsichtsbehörde einzureichen. Für Österreich ist zuständig: \n Österreichische Datenschutzbehörde \n Barichgasse 40–42 \n 1030 Wien"
-
   },
   "assign-page": {
     "title": "QR Code ist noch verfügbar",

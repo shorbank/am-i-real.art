@@ -1,70 +1,28 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
+import GuestbookForm from "../../../components/guestbook/GuestbookForm.astro";
 import { t } from "../../../i18n";
-import { db, Comment } from "astro:db";
 
 const { locale } = Astro.params;
-
-if (Astro.request.method === "POST") {
-  const formData = await Astro.request.formData();
-  const author = formData.get("author");
-  const body = formData.get("body");
-
-  if (typeof author === "string" && typeof body === "string" && body.trim()) {
-    await db.insert(Comment).values({
-      author: author.trim() || "Unknown",
-      body: body.trim(),
-      createdAt: new Date(),
-    });
-
-    return Astro.redirect(`/${locale}/guestbook`);
-  }
-}
 ---
 
 <Layout>
   <div class="pt-[70px]">
     <div class="container mx-auto pt-10 px-7 pr-12">
-        <h1 class="mb-8 flex flex-col">
-        <span class="font-balete-italic italic text-4xl">{t(locale, "guestbook-new.title1")}</span>
-        <span class="font-balete-black text-4xl">{t(locale, "guestbook-new.title2")}</span>
-        <span class="font-balete-italic italic text-4xl">{t(locale, "guestbook-new.title3")}</span>
-        </h1>
-        <p>{t(locale, "guestbook-new.intro-text")}</p>
+      <h1 class="mb-8 flex flex-col">
+        <span class="font-balete-italic italic text-4xl"
+          >{t(locale, "guestbook-new.title1")}</span
+        >
+        <span class="font-balete-black text-4xl"
+          >{t(locale, "guestbook-new.title2")}</span
+        >
+        <span class="font-balete-italic italic text-4xl"
+          >{t(locale, "guestbook-new.title3")}</span
+        >
+      </h1>
+      <p>{t(locale, "guestbook-new.intro-text")}</p>
 
-        <form method="POST" class="grid gap-2 mt-10 mb-20" style="max-width: 400px;">
-          <label for="author">Your name (optional)</label>
-          <input id="author" name="author" class="border border-black p-2" />
-
-          <label for="body">Your comment</label>
-          <textarea
-            id="body"
-            name="body"
-            rows="3"
-            required
-            maxlength="250"
-            class="border border-black p-2"
-          ></textarea>
-          <p id="char-count" class="text-sm text-gray-600 text-right">0 / 250</p>
-          <!--
-          <div class="text-sm mb-4">
-            <input type="checkbox" name="consent" />
-            <label for="consent">{t(locale, "guestbook-new.consent")}</label>
-          </div>
-          -->
-          <button class="bg-black text-white py-2 w-40 font-semibold" type="submit">
-            {t(locale, "guestbook-new.submit")}
-          </button>
-        </form>
+      <GuestbookForm />
     </div>
   </div>
-
-  <script is:inline>
-    const textarea = document.getElementById("body");
-    const counter = document.getElementById("char-count");
-
-    textarea.addEventListener("input", () => {
-      counter.textContent = `${textarea.value.length} / 250`;
-    });
-  </script>
 </Layout>

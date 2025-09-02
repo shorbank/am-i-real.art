@@ -1,0 +1,53 @@
+---
+import { db, Comment } from "astro:db";
+import { t } from "../../i18n";
+
+// Props
+const { locale } = Astro.params;
+
+// Server-Side Form Handling
+if (Astro.request.method === "POST") {
+  const formData = await Astro.request.formData();
+  const author = formData.get("author");
+  const body = formData.get("body");
+
+  if (typeof author === "string" && typeof body === "string" && body.trim()) {
+    await db.insert(Comment).values({
+      author: author.trim() || "Unknown",
+      body: body.trim(),
+      createdAt: new Date(),
+    });
+
+    return Astro.redirect(`/${locale}/guestbook`);
+  }
+}
+---
+
+<form method="POST" class="grid gap-2 mt-10 mb-20" style="max-width: 400px;">
+  <label for="author">Your name (optional)</label>
+  <input id="author" name="author" class="border border-black p-2" />
+
+  <label for="body">{t(locale, "guestbook-new.comment")}</label>
+  <textarea
+    id="body"
+    name="body"
+    rows="3"
+    required
+    maxlength="250"
+    class="border border-black p-2"></textarea>
+
+  <p id="char-count" class="text-sm text-gray-600 text-right">0 / 250</p>
+
+  <button class="bg-black text-white py-2 w-40 font-semibold" type="submit">
+    {t(locale, "guestbook-new.submit")}
+  </button>
+</form>
+
+<script is:inline>
+  const textarea = document.getElementById("body");
+  const counter = document.getElementById("char-count");
+
+  textarea?.addEventListener("input", () => {
+    counter.textContent = `${textarea.value.length} / 250`;
+  });
+</script>
